@@ -1,101 +1,144 @@
-<aside class="h-100" style="width: 300px; overflow-y: auto">
-  <h1>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non ea natus
-    doloribus perferendis nemo! Aperiam quos magnam tempora in animi nostrum
-    laudantium, odio enim porro, corrupti numquam, dolorum voluptatum aliquam.
-  </h1>
-  <h1>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non ea natus
-    doloribus perferendis nemo! Aperiam quos magnam tempora in animi nostrum
-    laudantium, odio enim porro, corrupti numquam, dolorum voluptatum aliquam.
-  </h1>
-  <h1>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non ea natus
-    doloribus perferendis nemo! Aperiam quos magnam tempora in animi nostrum
-    laudantium, odio enim porro, corrupti numquam, dolorum voluptatum aliquam.
-  </h1>
+<aside
+  class="h-100 border-end"
+  style="overflow-y: auto"
+  [style.width]="sidenavWidth"
+  [style.min-width]="sidenavWidth"
+  [style.max-width]="sidenavWidth"
+>
+  <div class="d-flex justify-content-center p-3">
+    <app-avatar size="150px"></app-avatar>
+  </div>
+
+  <div class="list-group">
+    <button
+      *ngFor="let section of sections"
+      type="button"
+      class="list-group-item list-group-item-action"
+      [ngClass]="{ active: activeSectionId == section.id }"
+      (click)="onSectionButtonClicked(section)"
+    >
+      <i class="bi me-2" [ngClass]="'bi-' + section.icon"></i>
+      {{ section.label }}
+    </button>
+  </div>
 </aside>
 
 <div class="w-100 h-100" style="display: flex; flex-direction: column">
-  <header class="outline-red">This is a header</header>
+  <header class="border-bottom">This is a header</header>
 
   <main class="w-100 h-100" style="position: relative; overflow-y: auto">
-    <section>About Me</section>
+    <div class="container py-5">
+      <section id="aboutMeSection">
+        <h1>About Me</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic omnis
+          vero, commodi perspiciatis velit saepe sint quas! Aliquam, odit
+          delectus. Officia dolores veritatis placeat aut enim aspernatur autem
+          iure porro?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic omnis
+          vero, commodi perspiciatis velit saepe sint quas! Aliquam, odit
+          delectus. Officia dolores veritatis placeat aut enim aspernatur autem
+          iure porro?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic omnis
+          vero, commodi perspiciatis velit saepe sint quas! Aliquam, odit
+          delectus. Officia dolores veritatis placeat aut enim aspernatur autem
+          iure porro?
+        </p>
+      </section>
 
-    <section>My Work Experience</section>
+      <section id="workExperienceSection">
+        <h1>My Work Experience</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ipsam
+          neque illo sit, iste, beatae corporis odio accusantium at nostrum
+          natus quisquam perspiciatis nemo dicta et voluptatem labore itaque
+          ullam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ipsam
+          neque illo sit, iste, beatae corporis odio accusantium at nostrum
+          natus quisquam perspiciatis nemo dicta et voluptatem labore itaque
+          ullam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ipsam
+          neque illo sit, iste, beatae corporis odio accusantium at nostrum
+          natus quisquam perspiciatis nemo dicta et voluptatem labore itaque
+          ullam.
+        </p>
+      </section>
 
-    <section>Technologies I use</section>
+      <section id="technologiesSection">
+        <h1>Technologies I use</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus error
+          fuga corrupti, eius veniam eligendi vero explicabo fugiat suscipit
+          accusamus. Aspernatur voluptatem ducimus consequatur aut sunt eos
+          dolorum temporibus sapiente?
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus error
+          fuga corrupti, eius veniam eligendi vero explicabo fugiat suscipit
+          accusamus. Aspernatur voluptatem ducimus consequatur aut sunt eos
+          dolorum temporibus sapiente?
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus error
+          fuga corrupti, eius veniam eligendi vero explicabo fugiat suscipit
+          accusamus. Aspernatur voluptatem ducimus consequatur aut sunt eos
+          dolorum temporibus sapiente?
+        </p>
+      </section>
 
-    <section>Side Projects</section>
+      <section id="sideProjectsSection">
+        <h1>Side Projects</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque
+          dolorum quod ut laudantium aspernatur ducimus fugiat. Sapiente nihil
+          autem numquam, ea eius, facilis recusandae animi molestias velit amet
+          beatae minus!
+        </p>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque
+          dolorum quod ut laudantium aspernatur ducimus fugiat. Sapiente nihil
+          autem numquam, ea eius, facilis recusandae animi molestias velit amet
+          beatae minus!
+        </p>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque
+          dolorum quod ut laudantium aspernatur ducimus fugiat. Sapiente nihil
+          autem numquam, ea eius, facilis recusandae animi molestias velit amet
+          beatae minus!
+        </p>
+      </section>
 
-    <section>Fun facts</section>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
-
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <section id="funFactsSection">
+        <h1>Fun facts</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque sit
+          culpa earum commodi laudantium repudiandae a! Maiores excepturi
+          reprehenderit quibusdam consequatur reiciendis cumque, assumenda
+          facilis voluptatibus possimus sequi, ad quisquam?
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque sit
+          culpa earum commodi laudantium repudiandae a! Maiores excepturi
+          reprehenderit quibusdam consequatur reiciendis cumque, assumenda
+          facilis voluptatibus possimus sequi, ad quisquam?
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque sit
+          culpa earum commodi laudantium repudiandae a! Maiores excepturi
+          reprehenderit quibusdam consequatur reiciendis cumque, assumenda
+          facilis voluptatibus possimus sequi, ad quisquam?
+        </p>
+      </section>
+    </div>
   </main>
 
-  <footer class="w-100 outline-red">This is a footer</footer>
+  <footer class="border-top">This is a footer</footer>
 </div>
