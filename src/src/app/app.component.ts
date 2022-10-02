@@ -12,7 +12,7 @@ interface SectionDef {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  readonly sidenavWidth = '230px';
+  readonly sidenavWidth = '250px';
 
   readonly sections: SectionDef[] = [
     {
@@ -28,7 +28,7 @@ export class AppComponent {
     {
       id: 'technologiesSection',
       icon: 'code',
-      label: 'Technologies I Use',
+      label: 'My Favorite Technologies',
     },
     {
       id: 'sideProjectsSection',
@@ -43,6 +43,91 @@ export class AppComponent {
   ];
 
   activeSectionId?: string;
+
+  readonly prefferedStackItems: any[] = [
+    {
+      src: 'https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg',
+      alt: 'MongoDB logo',
+      title: 'MongoDB',
+    },
+    {
+      src: 'https://angular.io/assets/images/logos/angular/angular.svg',
+      alt: 'Angular 2+ logo',
+      title: 'Angular 2+',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/.NET_Core_Logo.svg',
+      alt: 'ASP.NET Core logo',
+      title: 'ASP.NET Core',
+    },
+  ];
+
+  readonly databaseItems: any[] = [
+    {
+      src: 'https://img.icons8.com/color/480/microsoft-sql-server.png',
+      alt: 'SQL Server logo',
+      title: 'SQL Server',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png',
+      alt: 'SQL Server logo',
+      title: 'PostgreSQL',
+    },
+    {
+      src: 'https://cdn.worldvectorlogo.com/logos/redis.svg',
+      alt: 'Redis logo',
+      title: 'Redis',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sqlite-square-icon.svg/2048px-Sqlite-square-icon.svg.png',
+      alt: 'SQLite logo',
+      title: 'SQLite',
+    },
+  ];
+
+  readonly toolsItems: any[] = [
+    {
+      src: 'https://raw.githubusercontent.com/gist/Xainey/d5bde7d01dcbac51ac951810e94313aa/raw/6c858c46726541b48ddaaebab29c41c07a196394/PowerShell.svg',
+      alt: 'PowerShell logo',
+      title: 'PowerShell',
+    },
+    {
+      // src: 'https://www.svgrepo.com/show/349342/docker.svg',
+      src: 'https://www.svgrepo.com/show/331370/docker.svg',
+      alt: 'Docker logo',
+      title: 'Docker',
+    },
+    {
+      // src: 'https://www.kindpng.com/picc/m/299-2994956_azure-logo-microsoft-azure-logo-svg-hd-png.png',
+      alt: 'Azure logo',
+      title: 'Azure',
+    },
+    {
+      // src: 'https://www.kindpng.com/picc/m/299-2994956_azure-logo-microsoft-azure-logo-svg-hd-png.png',
+      alt: 'Google Cloud Platform logo',
+      title: 'Google Cloud Platform',
+    },
+    {
+      // src: 'https://www.kindpng.com/picc/m/299-2994956_azure-logo-microsoft-azure-logo-svg-hd-png.png',
+      alt: 'AWS logo',
+      title: 'AWS',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg',
+      alt: 'PowerBi logo',
+      title: 'PowerBi',
+    },
+    {
+      src: 'https://www.vectorlogo.zone/logos/sendgrid/sendgrid-icon.svg',
+      alt: 'SendGrid logo',
+      title: 'SendGrid',
+    },
+    {
+      src: 'https://www.svgrepo.com/show/349445/mailchimp.svg',
+      alt: 'MailChimp logo',
+      title: 'MailChimp',
+    },
+  ];
 
   onSectionButtonClicked(section: SectionDef) {
     const sectionElement = document.getElementById(section.id);

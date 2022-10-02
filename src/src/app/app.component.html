@@ -1,4 +1,5 @@
 <aside
+  *ngIf="false"
   class="h-100 border-end"
   style="overflow-y: auto"
   [style.width]="sidenavWidth"
@@ -28,262 +29,402 @@
 </aside>
 
 <div class="w-100 h-100" style="display: flex; flex-direction: column">
-  <header class="border-bottom p-3">
+  <header *ngIf="false" class="border-bottom p-3">
     <h2 class="text-center m-0">
       Hello! I'm Pablo <i class="bi bi-emoji-laughing"></i>
     </h2>
   </header>
 
   <main class="w-100 h-100" style="position: relative; overflow-y: auto">
-    <div class="container py-5">
-      <section id="aboutMeSection">
-        <h1>About Me</h1>
-        <p>
-          I'm a web developer<br />
-          I do development, supervision and maintenance of web applications. I
-          have experience in backend development; frontend development; database
-          management; code reviews; version control; organization, coordination
-          and delegation of tasks; troubleshooting and bug fixing; maintenance
-          and optimization of systems; software architecture design and design
-          pattern implementations. I've worked with Microsoft tools and
-          platforms like Visual Studio, .NET Core, Azure Repos, Azure Active
-          Directory, Azure DevOps and Automated Pipelines. I keep active
-          communication in English collaborating remotely with people from
-          various places in the world.
+    <section
+      id="mainSummary"
+      class="d-flex justify-content-center align-items-center"
+      style="
+        height: 100vh;
+        background: linear-gradient(
+          135deg,
+          rgb(245, 245, 245) 0%,
+          rgba(171, 184, 195, 1) 100%
+        );
+        position: relative;
+      "
+    >
+      <app-particles-bg style="z-index: 1"></app-particles-bg>
+
+      <div style="z-index: 2">
+        <h1 class="text-center mb-2" style="font-size: 3rem">Pablo Castillo</h1>
+        <h2 class="text-center mb-5">Web Developer</h2>
+
+        <div class="d-flex justify-content-center mb-5">
+          <app-avatar size="250px"></app-avatar>
+        </div>
+
+        <p class="text-center mb-5">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita,
+          eum praesentium. Quidem officia tenetur velit commodi.
         </p>
-      </section>
 
-      <section id="workExperienceSection">
-        <h1>My Work Experience</h1>
+        <p class="text-center mb-3">Feel free to join me!</p>
 
-        <ul>
-          <li>
-            <p class="fw-bold m-0">2021 - Present</p>
-            <ul>
-              <li>
-                <p class="m-0">
-                  Fulltime <b>Tech Lead / Fullstack Developer</b> at startup
-                  company
-                  <a href="https://asterias.com.mx/" target="_blank">
-                    Asterias Software Solutions
-                  </a>
-                </p>
-                <p>
-                  Lead of a small team of developers, code reviews, development
-                  of tools (<span class="text-danger"
-                    >utilities, scripts, libraries</span
-                  >) for internal usage, design and implementation of internal
-                  software architecture,
-                  <span class="text-danger">unit testing</span>, and fullstack
-                  developer in various types of web applications.
-                </p>
-              </li>
-              <li>
-                <p class="m-0">
-                  Part time <b>Fullstack Developer</b> at
-                  <a
-                    href="https://www.linkedin.com/company/edwire/about/"
-                    target="_blank"
-                  >
-                    EdWire
-                  </a>
-                </p>
-                <p>
-                  Contributor in the
-                  <a href="https://www.edgraph.com/" target="_blank">EdGraph</a>
-                  platform for
-                  <span class="text-danger">
-                    Education Organizations management
-                  </span>
-                  and as a <span class="text-danger">Saas</span> for other
-                  developers.
-                </p>
-              </li>
-            </ul>
-          </li>
+        <div class="d-flex justify-content-center">
+          <i
+            class="bi bi-linkedin mx-4"
+            style="color: #0a66c2; font-size: 2rem"
+          ></i>
+          <i
+            class="bi bi-github mx-4"
+            style="color: #692a84; font-size: 2rem"
+          ></i>
+          <i
+            class="bi bi-discord mx-4"
+            style="color: #5564de; font-size: 2rem"
+          ></i>
+        </div>
+      </div>
+    </section>
 
-          <li>
-            <p class="fw-bold m-0">2020 - 2021</p>
-            <ul>
-              <li>
-                <p class="m-0">
-                  Fulltime <b>Fullstack Developer</b> at
-                  <a href="http://bditechnology.com/" target="_blank">
-                    Bauhaus Dessau Informatika LLC
-                  </a>
-                </p>
-                <p>
-                  Development of web applications (CRMs, Multimedia) with heavy
-                  focus on using
-                  <span class="text-danger">Azure services</span> (DevOps,
-                  Repos, Pipelines, Web Jobs, etc.)
-                </p>
-              </li>
-              <li>
-                <p class="m-0">
-                  Part time <b>Fullstack Developer</b> at
-                  <a href="https://www.lnfdistributors.com/" target="_blank">
-                    L&F Distributors
-                  </a>
-                </p>
-                <p>
-                  Contributor in the
-                  <a
-                    href="https://portal.lnfdistributors.com/login"
-                    target="_blank"
-                  >
-                    L&F Distributors Portal
-                  </a>
-                  an online website with an
-                  <span class="text-danger">E-Commerce</span>-like platform for
-                  customers and an
-                  <span class="text-danger">Admin Panel</span> for company
-                  staff.
-                </p>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </section>
+    <section id="aboutMeSection" class="container py-5">
+      <h1><i class="bi bi-person me-2"></i> About Me</h1>
+      <hr class="mb-4" />
 
-      <section id="technologiesSection">
-        <h1>Technologies I use</h1>
-        <ul>
-          <li>
-            Frontend
-            <ul>
-              <li>HTML/CSS</li>
-              <li>JavaScript</li>
-              <li>TypeScript</li>
-              <li>Angular 2+</li>
-              <li>Vue</li>
-              <li>Ionic</li>
-              <li>Bootstrap</li>
-              <li>Material Design</li>
-            </ul>
-          </li>
-          <li>
-            Backend
-            <ul>
-              <li>C#</li>
-              <li>.NET Core</li>
-              <li>Entity Framework Core</li>
-              <li>Rest APIs</li>
-              <li>gRPC</li>
-              <li>Microservices</li>
-              <li>Docker</li>
-            </ul>
-          </li>
-          <li>
-            Databases
-            <ul>
-              <li>SQL Server</li>
-              <li>MongoDB</li>
-            </ul>
-          </li>
-          <li>
-            Tools
-            <ul>
-              <li>PowerBi</li>
-              <li>SendGrid</li>
-              <li>MailChimp</li>
-            </ul>
-          </li>
-          <li>
-            Cloud Platforms
-            <ul>
-              <li>
-                Azure
-                <ul>
-                  <li>DevOps</li>
-                </ul>
-              </li>
-              <li>
-                Google Cloud Platform
-                <ul>
-                  <li>Firebase</li>
-                  <li>Data Studio</li>
-                  <li>BigQuery</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </section>
+      <div class="row">
+        <div class="col-12 col-lg-6 p-3">
+          <p>
+            I do development, supervision and maintenance of web applications. I
+            have experience in backend development; frontend development;
+            database management; code reviews; version control; organization,
+            coordination and delegation of tasks; troubleshooting and bug
+            fixing; maintenance and optimization of systems; software
+            architecture design and design pattern implementations. I've worked
+            with Microsoft tools and platforms like Visual Studio, .NET Core,
+            Azure Repos, Azure Active Directory, Azure DevOps and Automated
+            Pipelines. I keep active communication in English collaborating
+            remotely with people from various places in the world.
+          </p>
+        </div>
+        <div class="col-12 col-lg-6 p-3">
+          <img
+            src="https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
+            alt="About Me"
+            style="width: 100%; border-radius: 30px"
+          />
+        </div>
+      </div>
+    </section>
 
-      <section id="sideProjectsSection">
-        <h1>Side Projects</h1>
-        <ul>
-          <li>
-            <a
-              href="https://github.com/AlexCR97/Viex.CloudPlatform.Main"
-              target="_blank"
-            >
-              Viex Cloud Platform
-            </a>
-            <p>
-              A Saas that offers services such as scheduled jobs, database
-              hosting, caching, IdP, among others, built with Angular + .NET
-              Core + MongoDB. Still a work in progress, but the most ambicuos
-              side project I've worked on.
-            </p>
-          </li>
-          <li>
-            <a href="https://github.com/DiracSpace/GPSTracking" target="_blank">
-              CBTIS 15 QR
-            </a>
-            <p>
-              A hybrid application (web/Android) that integrates sign-up, login,
-              qr code generation, qr code scanner, user profiles, gps tracking
-              and geocoding, built with Ionic + Firebase.
-            </p>
-          </li>
-          <li>
-            <a href="https://github.com/AlexCR97/CBTIS-15-Maps" target="_blank">
-              CBTIS 15 Maps
-            </a>
-            <p>
-              A hybrid application (web/Android) that integrates OpenStreetMaps,
-              gps tracking and gps routing, built with Ionic.
-            </p>
-          </li>
-          <li>
-            <a href="https://github.com/AlexCR97/Coffee-Shop" target="_blank">
-              Coffee Shop
-            </a>
-            <p>
-              An Android application to submit orders to a Coffee Shop, built
-              with Android Studio + SQLite.
-            </p>
-          </li>
-          <li>
-            <a href="#" target="_blank"> Memorama </a>
-            <p>
-              A web application to play the Memorama card game, built with Vue.
-            </p>
-          </li>
-        </ul>
-      </section>
+    <section id="workExperienceSection" class="container py-5">
+      <h1><i class="bi bi-briefcase me-2"></i> My Work Experience</h1>
+      <hr class="mb-4" />
 
-      <section id="funFactsSection">
-        <h1>Fun facts</h1>
-        <ul>
-          <li>I love to code</li>
-          <li>
-            I'm a cat lover
-            <div
-              style="
-                display: inline-block;
-                width: 30px;
-                height: 30px;
-                background: url('https://api.iconify.design/mdi/cat.svg')
-                  no-repeat center center / contain;
-              "
-            ></div>
-          </li>
-        </ul>
-      </section>
-    </div>
+      <ul>
+        <li>
+          <p class="fw-bold m-0">2021 - Present</p>
+          <ul>
+            <li>
+              <p class="m-0">
+                Fulltime <b>Tech Lead / Fullstack Developer</b> at startup
+                company
+                <a href="https://asterias.com.mx/" target="_blank">
+                  Asterias Software Solutions
+                </a>
+              </p>
+              <p>
+                Lead of a small team of developers, code reviews, development of
+                tools (<span class="text-danger"
+                  >utilities, scripts, libraries</span
+                >) for internal usage, design and implementation of internal
+                software architecture,
+                <span class="text-danger">unit testing</span>, and fullstack
+                developer in various types of web applications.
+              </p>
+            </li>
+            <li>
+              <p class="m-0">
+                Part time <b>Fullstack Developer</b> at
+                <a
+                  href="https://www.linkedin.com/company/edwire/about/"
+                  target="_blank"
+                >
+                  EdWire
+                </a>
+              </p>
+              <p>
+                Contributor in the
+                <a href="https://www.edgraph.com/" target="_blank">EdGraph</a>
+                platform for
+                <span class="text-danger">
+                  Education Organizations management
+                </span>
+                and as a <span class="text-danger">Saas</span> for other
+                developers.
+              </p>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <p class="fw-bold m-0">2020 - 2021</p>
+          <ul>
+            <li>
+              <p class="m-0">
+                Fulltime <b>Fullstack Developer</b> at
+                <a href="http://bditechnology.com/" target="_blank">
+                  Bauhaus Dessau Informatika LLC
+                </a>
+              </p>
+              <p>
+                Development of web applications (CRMs, Multimedia) with heavy
+                focus on using
+                <span class="text-danger">Azure services</span> (DevOps, Repos,
+                Pipelines, Web Jobs, etc.)
+              </p>
+            </li>
+            <li>
+              <p class="m-0">
+                Part time <b>Fullstack Developer</b> at
+                <a href="https://www.lnfdistributors.com/" target="_blank">
+                  L&F Distributors
+                </a>
+              </p>
+              <p>
+                Contributor in the
+                <a
+                  href="https://portal.lnfdistributors.com/login"
+                  target="_blank"
+                >
+                  L&F Distributors Portal
+                </a>
+                an online website with an
+                <span class="text-danger">E-Commerce</span>-like platform for
+                customers and an
+                <span class="text-danger">Admin Panel</span> for company staff.
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="technologiesSection" class="container py-5">
+      <h1><i class="bi bi-code me-2"></i> My Favorite Technologies</h1>
+      <hr class="mb-4" />
+
+      <p class="text-center mb-4">
+        My preffered stack is <span class="text-danger">MAANC</span>... or you
+        might know it as:
+      </p>
+
+      <div class="d-flex justify-content-center align-items-center mb-5">
+        <div *ngFor="let item of prefferedStackItems" class="mx-5">
+          <div class="d-flex justify-content-center mb-3">
+            <img
+              [src]="item.src"
+              [alt]="item.alt"
+              style="width: 120px; height: 120px"
+            />
+          </div>
+          <h3 class="text-center">{{ item.title }}</h3>
+        </div>
+      </div>
+
+      <p class="text-center">But I have also worked with:</p>
+
+      <h3 class="text-center mb-4">Frontend</h3>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"
+          alt="Vue.js logo"
+          style="width: 100px"
+        />
+        <img
+          src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ionic-icon.png"
+          alt="Ionic logo"
+          style="width: 100px"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg"
+          alt="Svelte logo"
+          style="width: 100px"
+        />
+        <img
+          src="https://www.vectorlogo.zone/logos/jquery/jquery-icon.svg"
+          alt="jQuery logo"
+          style="width: 100px"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg"
+          alt="Bootstrap logo"
+          style="width: 100px"
+        />
+        <img
+          src="https://cdn.worldvectorlogo.com/logos/material-ui-1.svg"
+          alt="Material UI logo"
+          style="width: 100px"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <img
+          *ngFor="let item of databaseItems"
+          [src]="item.src"
+          [alt]="item.alt"
+          style="width: 100px"
+          class="mx-4"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <img
+          *ngFor="let item of toolsItems"
+          [src]="item.src"
+          [alt]="item.alt"
+          style="width: 100px"
+          class="mx-4"
+        />
+      </div>
+
+      <ul>
+        <li>
+          Frontend
+          <ul>
+            <li>HTML/CSS</li>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>Angular 2+</li>
+            <li>Vue</li>
+            <li>Ionic</li>
+            <li>Bootstrap</li>
+            <li>Material Design</li>
+          </ul>
+        </li>
+        <li>
+          Backend
+          <ul>
+            <li>C#</li>
+            <li>.NET Core</li>
+            <li>Entity Framework Core</li>
+            <li>Rest APIs</li>
+            <li>gRPC</li>
+            <li>Microservices</li>
+            <li>Docker</li>
+          </ul>
+        </li>
+        <li>
+          Databases
+          <ul>
+            <li>SQL Server</li>
+            <li>MongoDB</li>
+          </ul>
+        </li>
+        <li>
+          Tools
+          <ul>
+            <li>PowerBi</li>
+            <li>SendGrid</li>
+            <li>MailChimp</li>
+          </ul>
+        </li>
+        <li>
+          Cloud Platforms
+          <ul>
+            <li>
+              Azure
+              <ul>
+                <li>DevOps</li>
+              </ul>
+            </li>
+            <li>
+              Google Cloud Platform
+              <ul>
+                <li>Firebase</li>
+                <li>Data Studio</li>
+                <li>BigQuery</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="sideProjectsSection">
+      <h1>Side Projects</h1>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/AlexCR97/Viex.CloudPlatform.Main"
+            target="_blank"
+          >
+            Viex Cloud Platform
+          </a>
+          <p>
+            A Saas that offers services such as scheduled jobs, database
+            hosting, caching, IdP, among others, built with Angular + .NET Core
+            + MongoDB. Still a work in progress, but the most ambicuos side
+            project I've worked on.
+          </p>
+        </li>
+        <li>
+          <a href="https://github.com/DiracSpace/GPSTracking" target="_blank">
+            CBTIS 15 QR
+          </a>
+          <p>
+            A hybrid application (web/Android) that integrates sign-up, login,
+            qr code generation, qr code scanner, user profiles, gps tracking and
+            geocoding, built with Ionic + Firebase.
+          </p>
+        </li>
+        <li>
+          <a href="https://github.com/AlexCR97/CBTIS-15-Maps" target="_blank">
+            CBTIS 15 Maps
+          </a>
+          <p>
+            A hybrid application (web/Android) that integrates OpenStreetMaps,
+            gps tracking and gps routing, built with Ionic.
+          </p>
+        </li>
+        <li>
+          <a href="https://github.com/AlexCR97/Coffee-Shop" target="_blank">
+            Coffee Shop
+          </a>
+          <p>
+            An Android application to submit orders to a Coffee Shop, built with
+            Android Studio + SQLite.
+          </p>
+        </li>
+        <li>
+          <a
+            href="https://github.com/AlexCR97/Puppies-Memorama.git"
+            target="_blank"
+          >
+            Puppies Memorama
+          </a>
+          <p>
+            A web application to play the Memorama card game... with puppies!
+            Built with Vue.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="funFactsSection">
+      <h1>Fun facts</h1>
+      <ul>
+        <li>I love to code</li>
+        <li>
+          I'm a cat lover
+          <div
+            style="
+              display: inline-block;
+              width: 30px;
+              height: 30px;
+              background: url('https://api.iconify.design/mdi/cat.svg')
+                no-repeat center center / contain;
+            "
+          ></div>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <footer class="border-top d-flex justify-content-end px-1">
