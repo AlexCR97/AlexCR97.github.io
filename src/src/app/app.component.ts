@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
 
 interface SectionDef {
   id: string;
@@ -62,7 +63,40 @@ export class AppComponent {
     },
   ];
 
-  readonly databaseItems: any[] = [
+  readonly frontendImages: AutoSlideImage[] = [
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg',
+      alt: 'Vue.js logo',
+      title: 'Vue.js',
+    },
+    {
+      src: 'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ionic-icon.png',
+      alt: 'Ionic logo',
+      title: 'Ionic',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg',
+      alt: 'Svelte logo',
+      title: 'Svelte',
+    },
+    {
+      src: 'https://www.vectorlogo.zone/logos/jquery/jquery-icon.svg',
+      alt: 'jQuery logo',
+      title: 'jQuery',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg',
+      alt: 'Bootstrap logo',
+      title: 'Bootstrap',
+    },
+    {
+      src: 'https://cdn.worldvectorlogo.com/logos/material-ui-1.svg',
+      alt: 'Material UI logo',
+      title: 'Material UI',
+    },
+  ];
+
+  readonly databaseItems: AutoSlideImage[] = [
     {
       src: 'https://img.icons8.com/color/480/microsoft-sql-server.png',
       alt: 'SQL Server logo',
@@ -85,30 +119,29 @@ export class AppComponent {
     },
   ];
 
-  readonly toolsItems: any[] = [
+  readonly toolsItems: AutoSlideImage[] = [
     {
       src: 'https://raw.githubusercontent.com/gist/Xainey/d5bde7d01dcbac51ac951810e94313aa/raw/6c858c46726541b48ddaaebab29c41c07a196394/PowerShell.svg',
       alt: 'PowerShell logo',
       title: 'PowerShell',
     },
     {
-      // src: 'https://www.svgrepo.com/show/349342/docker.svg',
       src: 'https://www.svgrepo.com/show/331370/docker.svg',
       alt: 'Docker logo',
       title: 'Docker',
     },
     {
-      // src: 'https://www.kindpng.com/picc/m/299-2994956_azure-logo-microsoft-azure-logo-svg-hd-png.png',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/2048px-Microsoft_Azure.svg.png',
       alt: 'Azure logo',
       title: 'Azure',
     },
     {
-      // src: 'https://www.kindpng.com/picc/m/299-2994956_azure-logo-microsoft-azure-logo-svg-hd-png.png',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Google-cloud-platform.svg/2048px-Google-cloud-platform.svg.png',
       alt: 'Google Cloud Platform logo',
-      title: 'Google Cloud Platform',
+      title: 'GCP',
     },
     {
-      // src: 'https://www.kindpng.com/picc/m/299-2994956_azure-logo-microsoft-azure-logo-svg-hd-png.png',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
       alt: 'AWS logo',
       title: 'AWS',
     },
