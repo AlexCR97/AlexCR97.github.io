@@ -1,0 +1,10 @@
+<div class="background-overlay"></div>
+
+<div #scrollArea class="scroll-area">
+  <div *ngFor="let item of images" class="mx-5">
+    <div class="d-flex justify-content-center mb-3">
+      <img [src]="item.src" [alt]="item.alt" [style.height]="size" />
+    </div>
+    <h5 class="text-center">{{ item.title }}</h5>
+  </div>
+</div>

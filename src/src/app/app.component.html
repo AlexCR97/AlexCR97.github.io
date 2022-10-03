@@ -1,101 +1,285 @@
-<aside class="h-100" style="width: 300px; overflow-y: auto">
-  <h1>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non ea natus
-    doloribus perferendis nemo! Aperiam quos magnam tempora in animi nostrum
-    laudantium, odio enim porro, corrupti numquam, dolorum voluptatum aliquam.
-  </h1>
-  <h1>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non ea natus
-    doloribus perferendis nemo! Aperiam quos magnam tempora in animi nostrum
-    laudantium, odio enim porro, corrupti numquam, dolorum voluptatum aliquam.
-  </h1>
-  <h1>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non ea natus
-    doloribus perferendis nemo! Aperiam quos magnam tempora in animi nostrum
-    laudantium, odio enim porro, corrupti numquam, dolorum voluptatum aliquam.
-  </h1>
+<aside
+  *ngIf="false"
+  class="h-100 border-end"
+  style="overflow-y: auto"
+  [style.width]="sidenavWidth"
+  [style.min-width]="sidenavWidth"
+  [style.max-width]="sidenavWidth"
+>
+  <div class="p-3">
+    <div class="d-flex justify-content-center mb-2">
+      <app-avatar size="150px"></app-avatar>
+    </div>
+    <p class="text-center m-0">Pablo Castillo</p>
+    <p class="text-center m-0">Fullstack Developer</p>
+  </div>
+
+  <div class="list-group">
+    <button
+      *ngFor="let section of sections"
+      type="button"
+      class="list-group-item list-group-item-action"
+      [ngClass]="{ active: activeSectionId == section.id }"
+      (click)="onSectionButtonClicked(section)"
+    >
+      <i class="bi me-2" [ngClass]="'bi-' + section.icon"></i>
+      {{ section.label }}
+    </button>
+  </div>
 </aside>
 
 <div class="w-100 h-100" style="display: flex; flex-direction: column">
-  <header class="outline-red">This is a header</header>
+  <header *ngIf="false" class="border-bottom p-3">
+    <h2 class="text-center m-0">
+      Hello! I'm Pablo <i class="bi bi-emoji-laughing"></i>
+    </h2>
+  </header>
 
   <main class="w-100 h-100" style="position: relative; overflow-y: auto">
-    <section>About Me</section>
+    <section
+      id="mainSummary"
+      class="d-flex justify-content-center align-items-center"
+      style="
+        height: 100vh;
+        background: linear-gradient(
+          135deg,
+          rgb(245, 245, 245) 0%,
+          rgba(171, 184, 195, 1) 100%
+        );
+        position: relative;
+      "
+    >
+      <app-particles-bg style="z-index: 1"></app-particles-bg>
 
-    <section>My Work Experience</section>
+      <div style="z-index: 2">
+        <h1 class="text-center mb-2" style="font-size: 3rem">Pablo Castillo</h1>
+        <h2 class="text-center mb-5">Web Developer</h2>
 
-    <section>Technologies I use</section>
+        <div class="d-flex justify-content-center mb-5">
+          <app-avatar size="250px"></app-avatar>
+        </div>
 
-    <section>Side Projects</section>
+        <p class="text-center mb-5">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita,
+          eum praesentium. Quidem officia tenetur velit commodi.
+        </p>
 
-    <section>Fun facts</section>
+        <p class="text-center mb-3">Feel free to join me!</p>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+        <div class="d-flex justify-content-center">
+          <i
+            class="bi bi-linkedin mx-4"
+            style="color: #0a66c2; font-size: 2rem"
+          ></i>
+          <i
+            class="bi bi-github mx-4"
+            style="color: #692a84; font-size: 2rem"
+          ></i>
+          <i
+            class="bi bi-discord mx-4"
+            style="color: #5564de; font-size: 2rem"
+          ></i>
+        </div>
+      </div>
+    </section>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+    <section id="aboutMeSection" class="container py-5">
+      <h1><i class="bi bi-person me-2"></i> About Me</h1>
+      <hr class="mb-4" />
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <div class="row">
+        <div class="col-12 col-lg-6 p-3">
+          <p>
+            I do development, supervision and maintenance of web applications. I
+            have experience in backend development; frontend development;
+            database management; code reviews; version control; organization,
+            coordination and delegation of tasks; troubleshooting and bug
+            fixing; maintenance and optimization of systems; software
+            architecture design and design pattern implementations. I've worked
+            with Microsoft tools and platforms like Visual Studio, .NET Core,
+            Azure Repos, Azure Active Directory, Azure DevOps and Automated
+            Pipelines. I keep active communication in English collaborating
+            remotely with people from various places in the world.
+          </p>
+        </div>
+        <div class="col-12 col-lg-6 p-3">
+          <img
+            src="https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
+            alt="About Me"
+            style="width: 100%; border-radius: 30px"
+          />
+        </div>
+      </div>
+    </section>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+    <section id="workExperienceSection" class="container py-5">
+      <h1><i class="bi bi-briefcase me-2"></i> My Work Experience</h1>
+      <hr class="mb-4" />
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <section>
+        <h4>2021 - Present</h4>
+        <div
+          *ngFor="let item of workExperienceItems1"
+          class="border-bottom pb-3 mb-4"
+        >
+          <p class="mb-2">
+            <b>{{ item.jobTitle }}</b> at
+            <span [innerHtml]="item.companyName"></span>
+          </p>
+          <div class="d-flex align-items-center mb-2">
+            <p class="m-0 me-4">
+              <i class="bi bi-clock me-1"></i> {{ item.jobSchedule }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-building me-1"></i> {{ item.jobType }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-geo-alt me-1"></i> {{ item.jobLocation }}
+            </p>
+          </div>
+          <p [innerHtml]="item.summary" class="m-0"></p>
+        </div>
+      </section>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <section>
+        <h4>2020 - 2021</h4>
+        <div
+          *ngFor="let item of workExperienceItems2"
+          class="border-bottom pb-3 mb-4"
+        >
+          <p class="mb-2">
+            <b>{{ item.jobTitle }}</b> at
+            <span [innerHtml]="item.companyName"></span>
+          </p>
+          <div class="d-flex align-items-center mb-2">
+            <p class="m-0 me-4">
+              <i class="bi bi-clock me-1"></i> {{ item.jobSchedule }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-building me-1"></i> {{ item.jobType }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-geo-alt me-1"></i> {{ item.jobLocation }}
+            </p>
+          </div>
+          <p [innerHtml]="item.summary" class="m-0"></p>
+        </div>
+      </section>
+    </section>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+    <section id="technologiesSection" class="container py-5">
+      <h1><i class="bi bi-code me-2"></i> My Favorite Technologies</h1>
+      <hr class="mb-4" />
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <p class="text-center mb-4">
+        My preffered stack is <span class="text-danger">MAANC</span>... or you
+        might know it as:
+      </p>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <div class="d-flex justify-content-center align-items-center mb-5">
+        <div *ngFor="let item of prefferedStackItems" class="mx-5">
+          <div class="d-flex justify-content-center mb-3">
+            <img
+              [src]="item.src"
+              [alt]="item.alt"
+              style="width: 120px; height: 120px"
+            />
+          </div>
+          <h3 class="text-center">{{ item.title }}</h3>
+        </div>
+      </div>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <p class="text-center">But I have also worked with:</p>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nisi vel
-      a minus. Odit, mollitia accusamus. Est, quaerat eos. Ex, ad consectetur
-      laboriosam libero eligendi illo numquam voluptatum quae amet.
-    </h1>
+      <div class="mb-5">
+        <h3 class="text-center mb-4">Frontend</h3>
+        <app-auto-slide-images
+          [images]="frontendImages"
+        ></app-auto-slide-images>
+      </div>
+
+      <div class="mb-5">
+        <h3 class="text-center mb-4">Databases</h3>
+        <app-auto-slide-images [images]="databaseItems"></app-auto-slide-images>
+      </div>
+
+      <div class="mb-5">
+        <h3 class="text-center mb-4">Tools and Libraries</h3>
+        <app-auto-slide-images [images]="toolsItems"></app-auto-slide-images>
+      </div>
+    </section>
+
+    <section id="sideProjectsSection" class="container pb-5 mb-5">
+      <div class="shadow" style="border-radius: 20px">
+        <div class="header px-4 py-3 border-bottom">
+          <h1><i class="bi bi-kanban me-2"></i> Side Projects</h1>
+        </div>
+        <section *ngFor="let project of sideProjects" class="p-4 border-bottom">
+          <h5>{{ project.title }}</h5>
+          <p [innerHtml]="project.summary"></p>
+          <div class="row mb-3">
+            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
+              <img
+                [src]="project.img1"
+                style="border-radius: 10px; width: 100%"
+              />
+            </div>
+            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
+              <img
+                [src]="project.img2"
+                style="border-radius: 10px; width: 100%"
+              />
+            </div>
+            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
+              <img
+                [src]="project.img3"
+                style="border-radius: 10px; width: 100%"
+              />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <i
+              class="bi bi-browser-chrome ps-3"
+              style="color: #d6372b; font-size: 1.5rem"
+            ></i>
+            <i
+              class="bi bi-github ps-3"
+              style="color: #692a84; font-size: 1.5rem"
+            ></i>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="funFactsSection" class="container pb-5 mb-5">
+      <div class="shadow" style="border-radius: 20px">
+        <div class="header px-4 py-3 border-bottom">
+          <h1><i class="bi bi-emoji-laughing me-2"></i> Fun Facts</h1>
+        </div>
+        <div class="p-4">
+          <ul>
+            <li>I love to code</li>
+            <li>
+              I'm a cat lover
+              <div
+                style="
+                  display: inline-block;
+                  width: 30px;
+                  height: 30px;
+                  background: url('https://api.iconify.design/mdi/cat.svg')
+                    no-repeat center center / contain;
+                "
+              ></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="w-100 outline-red">This is a footer</footer>
+  <footer *ngIf="false" class="border-top d-flex justify-content-end px-1">
+    <p class="m-0 text-muted" style="font-size: 0.9rem">
+      Pablo Castillo 2022 &copy;
+    </p>
+  </footer>
 </div>

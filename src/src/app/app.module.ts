@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
+import { ParticlesBgComponent } from './components/particles-bg/particles-bg.component';
+import { AutoSlideImagesComponent } from './components/auto-slide-images/auto-slide-images.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AvatarComponent,
+    ParticlesBgComponent,
+    AutoSlideImagesComponent
   ],
   imports: [
     BrowserModule,
