@@ -50,7 +50,6 @@ export class AutoSlideImagesComponent implements AfterViewInit, OnDestroy {
   }
 
   private scrollToEnd() {
-    console.log('scrollToEnd');
     const scrollAmount = this.randomIntFromRange(1, 2);
     const scrollInterval = this.randomIntFromRange(10, 20);
     this.intervalSubscription = interval(scrollInterval).subscribe(() => {
@@ -66,7 +65,6 @@ export class AutoSlideImagesComponent implements AfterViewInit, OnDestroy {
   }
 
   private scrollToStart() {
-    console.log('scrollToStart');
     const scrollAmount = this.randomIntFromRange(1, 2);
     const scrollInterval = this.randomIntFromRange(10, 20);
     this.intervalSubscription = interval(scrollInterval).subscribe(() => {

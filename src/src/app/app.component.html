@@ -116,93 +116,55 @@
       <h1><i class="bi bi-briefcase me-2"></i> My Work Experience</h1>
       <hr class="mb-4" />
 
-      <ul>
-        <li>
-          <p class="fw-bold m-0">2021 - Present</p>
-          <ul>
-            <li>
-              <p class="m-0">
-                Fulltime <b>Tech Lead / Fullstack Developer</b> at startup
-                company
-                <a href="https://asterias.com.mx/" target="_blank">
-                  Asterias Software Solutions
-                </a>
-              </p>
-              <p>
-                Lead of a small team of developers, code reviews, development of
-                tools (<span class="text-danger"
-                  >utilities, scripts, libraries</span
-                >) for internal usage, design and implementation of internal
-                software architecture,
-                <span class="text-danger">unit testing</span>, and fullstack
-                developer in various types of web applications.
-              </p>
-            </li>
-            <li>
-              <p class="m-0">
-                Part time <b>Fullstack Developer</b> at
-                <a
-                  href="https://www.linkedin.com/company/edwire/about/"
-                  target="_blank"
-                >
-                  EdWire
-                </a>
-              </p>
-              <p>
-                Contributor in the
-                <a href="https://www.edgraph.com/" target="_blank">EdGraph</a>
-                platform for
-                <span class="text-danger">
-                  Education Organizations management
-                </span>
-                and as a <span class="text-danger">Saas</span> for other
-                developers.
-              </p>
-            </li>
-          </ul>
-        </li>
+      <section>
+        <h4>2021 - Present</h4>
+        <div
+          *ngFor="let item of workExperienceItems1"
+          class="border-bottom pb-3 mb-4"
+        >
+          <p class="mb-2">
+            <b>{{ item.jobTitle }}</b> at
+            <span [innerHtml]="item.companyName"></span>
+          </p>
+          <div class="d-flex align-items-center mb-2">
+            <p class="m-0 me-4">
+              <i class="bi bi-clock me-1"></i> {{ item.jobSchedule }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-building me-1"></i> {{ item.jobType }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-geo-alt me-1"></i> {{ item.jobLocation }}
+            </p>
+          </div>
+          <p [innerHtml]="item.summary" class="m-0"></p>
+        </div>
+      </section>
 
-        <li>
-          <p class="fw-bold m-0">2020 - 2021</p>
-          <ul>
-            <li>
-              <p class="m-0">
-                Fulltime <b>Fullstack Developer</b> at
-                <a href="http://bditechnology.com/" target="_blank">
-                  Bauhaus Dessau Informatika LLC
-                </a>
-              </p>
-              <p>
-                Development of web applications (CRMs, Multimedia) with heavy
-                focus on using
-                <span class="text-danger">Azure services</span> (DevOps, Repos,
-                Pipelines, Web Jobs, etc.)
-              </p>
-            </li>
-            <li>
-              <p class="m-0">
-                Part time <b>Fullstack Developer</b> at
-                <a href="https://www.lnfdistributors.com/" target="_blank">
-                  L&F Distributors
-                </a>
-              </p>
-              <p>
-                Contributor in the
-                <a
-                  href="https://portal.lnfdistributors.com/login"
-                  target="_blank"
-                >
-                  L&F Distributors Portal
-                </a>
-                an online website with an
-                <span class="text-danger">E-Commerce</span>-like platform for
-                customers and an
-                <span class="text-danger">Admin Panel</span> for company staff.
-              </p>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <section>
+        <h4>2020 - 2021</h4>
+        <div
+          *ngFor="let item of workExperienceItems2"
+          class="border-bottom pb-3 mb-4"
+        >
+          <p class="mb-2">
+            <b>{{ item.jobTitle }}</b> at
+            <span [innerHtml]="item.companyName"></span>
+          </p>
+          <div class="d-flex align-items-center mb-2">
+            <p class="m-0 me-4">
+              <i class="bi bi-clock me-1"></i> {{ item.jobSchedule }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-building me-1"></i> {{ item.jobType }}
+            </p>
+            <p class="m-0 me-4">
+              <i class="bi bi-geo-alt me-1"></i> {{ item.jobLocation }}
+            </p>
+          </div>
+          <p [innerHtml]="item.summary" class="m-0"></p>
+        </div>
+      </section>
     </section>
 
     <section id="technologiesSection" class="container py-5">
@@ -247,83 +209,71 @@
       </div>
     </section>
 
-    <section id="sideProjectsSection">
-      <h1>Side Projects</h1>
-      <ul>
-        <li>
-          <a
-            href="https://github.com/AlexCR97/Viex.CloudPlatform.Main"
-            target="_blank"
-          >
-            Viex Cloud Platform
-          </a>
-          <p>
-            A Saas that offers services such as scheduled jobs, database
-            hosting, caching, IdP, among others, built with Angular + .NET Core
-            + MongoDB. Still a work in progress, but the most ambicuos side
-            project I've worked on.
-          </p>
-        </li>
-        <li>
-          <a href="https://github.com/DiracSpace/GPSTracking" target="_blank">
-            CBTIS 15 QR
-          </a>
-          <p>
-            A hybrid application (web/Android) that integrates sign-up, login,
-            qr code generation, qr code scanner, user profiles, gps tracking and
-            geocoding, built with Ionic + Firebase.
-          </p>
-        </li>
-        <li>
-          <a href="https://github.com/AlexCR97/CBTIS-15-Maps" target="_blank">
-            CBTIS 15 Maps
-          </a>
-          <p>
-            A hybrid application (web/Android) that integrates OpenStreetMaps,
-            gps tracking and gps routing, built with Ionic.
-          </p>
-        </li>
-        <li>
-          <a href="https://github.com/AlexCR97/Coffee-Shop" target="_blank">
-            Coffee Shop
-          </a>
-          <p>
-            An Android application to submit orders to a Coffee Shop, built with
-            Android Studio + SQLite.
-          </p>
-        </li>
-        <li>
-          <a
-            href="https://github.com/AlexCR97/Puppies-Memorama.git"
-            target="_blank"
-          >
-            Puppies Memorama
-          </a>
-          <p>
-            A web application to play the Memorama card game... with puppies!
-            Built with Vue.
-          </p>
-        </li>
-      </ul>
+    <section id="sideProjectsSection" class="container pb-5 mb-5">
+      <div class="shadow" style="border-radius: 20px">
+        <div class="header px-4 py-3 border-bottom">
+          <h1><i class="bi bi-kanban me-2"></i> Side Projects</h1>
+        </div>
+        <section *ngFor="let project of sideProjects" class="p-4 border-bottom">
+          <h5>{{ project.title }}</h5>
+          <p [innerHtml]="project.summary"></p>
+          <div class="row mb-3">
+            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
+              <img
+                [src]="project.img1"
+                style="border-radius: 10px; width: 100%"
+              />
+            </div>
+            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
+              <img
+                [src]="project.img2"
+                style="border-radius: 10px; width: 100%"
+              />
+            </div>
+            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
+              <img
+                [src]="project.img3"
+                style="border-radius: 10px; width: 100%"
+              />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <i
+              class="bi bi-browser-chrome ps-3"
+              style="color: #d6372b; font-size: 1.5rem"
+            ></i>
+            <i
+              class="bi bi-github ps-3"
+              style="color: #692a84; font-size: 1.5rem"
+            ></i>
+          </div>
+        </section>
+      </div>
     </section>
 
-    <section id="funFactsSection">
-      <h1>Fun facts</h1>
-      <ul>
-        <li>I love to code</li>
-        <li>
-          I'm a cat lover
-          <div
-            style="
-              display: inline-block;
-              width: 30px;
-              height: 30px;
-              background: url('https://api.iconify.design/mdi/cat.svg')
-                no-repeat center center / contain;
-            "
-          ></div>
-        </li>
-      </ul>
+    <section id="funFactsSection" class="container pb-5 mb-5">
+      <div class="shadow" style="border-radius: 20px">
+        <div class="header px-4 py-3 border-bottom">
+          <h1><i class="bi bi-emoji-laughing me-2"></i> Fun Facts</h1>
+        </div>
+        <div class="p-4">
+          <ul>
+            <li>I love to code</li>
+            <li>
+              I'm a cat lover
+              <div
+                style="
+                  display: inline-block;
+                  width: 30px;
+                  height: 30px;
+                  background: url('https://api.iconify.design/mdi/cat.svg')
+                    no-repeat center center / contain;
+                "
+              ></div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 

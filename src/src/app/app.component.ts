@@ -7,6 +7,15 @@ interface SectionDef {
   label: string;
 }
 
+interface WorkExperienceItem {
+  jobTitle: string;
+  companyName: string;
+  summary: string;
+  jobSchedule: 'Full-time' | 'Part-time';
+  jobType: 'Insource' | 'Outsource';
+  jobLocation: 'Onshore' | 'Offshore';
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -44,6 +53,44 @@ export class AppComponent {
   ];
 
   activeSectionId?: string;
+
+  readonly workExperienceItems1: WorkExperienceItem[] = [
+    {
+      jobTitle: 'Tech Lead / Fullstack Developer',
+      companyName: `startup company <a href="https://asterias.com.mx/" target="_blank">Asterias Software Solutions</a>`,
+      jobSchedule: 'Full-time',
+      jobType: 'Insource',
+      jobLocation: 'Onshore',
+      summary: `Lead of a small team of developers, code reviews, development of tools (<span class="text-danger">utilities, scripts, libraries</span>) for internal usage, design and implementation of <span class="text-danger">internal software architecture</span>, <span class="text-danger">unit testing</span>, and fullstack developer in various types of web applications.`,
+    },
+    {
+      jobTitle: 'Fullstack Developer',
+      companyName: `<a href="https://www.linkedin.com/company/edwire/about/" target="_blank">EdWire</a>`,
+      jobSchedule: 'Part-time',
+      jobType: 'Outsource',
+      jobLocation: 'Offshore',
+      summary: `Contributor in the <a href="https://www.edgraph.com/" target="_blank">EdGraph</a> platform for <span class="text-danger">Education Organizations management</span> and as a <span class="text-danger">Saas</span> for other developers. I developed SPAs, REST APIs and Microservices with gRPC.`,
+    },
+  ];
+
+  readonly workExperienceItems2: WorkExperienceItem[] = [
+    {
+      jobTitle: 'Fullstack Developer',
+      companyName: `<a href="http://bditechnology.com/" target="_blank">Bauhaus Dessau Informatika LLC</a>`,
+      jobSchedule: 'Part-time',
+      jobType: 'Outsource',
+      jobLocation: 'Offshore',
+      summary: `Development of web applications with heavy focus on using <span class="text-danger">Azure services</span> (DevOps, Repos, Pipelines, Web Jobs, etc.)`,
+    },
+    {
+      jobTitle: 'Fullstack Developer',
+      companyName: `<a href="https://www.lnfdistributors.com/" target="_blank">L&F Distributors</a>`,
+      jobSchedule: 'Part-time',
+      jobType: 'Outsource',
+      jobLocation: 'Offshore',
+      summary: `Contributor in the <a href="https://portal.lnfdistributors.com/login" target="_blank">L&F Distributors Portal</a> an online website with an <span class="text-danger">E-Commerce</span>-like platform for customers and an <span class="text-danger">Admin Panel</span> for company staff.`,
+    },
+  ];
 
   readonly prefferedStackItems: any[] = [
     {
@@ -159,6 +206,54 @@ export class AppComponent {
       src: 'https://www.svgrepo.com/show/349445/mailchimp.svg',
       alt: 'MailChimp logo',
       title: 'MailChimp',
+    },
+  ];
+
+  readonly sideProjects: any[] = [
+    {
+      title: 'Viex Cloud Platform',
+      summary: `A <span class="text-danger">Saas</span> that offers services such as scheduled jobs, database hosting, caching, IdP, among others, built with <span class="text-danger">Angular + .NET Core + MongoDB</span>. Still a work in progress, but the most ambicuos side project I've worked on.`,
+      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      websiteLink: '#',
+      githubLink: 'https://github.com/AlexCR97/Viex.CloudPlatform.Main',
+    },
+    {
+      title: 'CBTIS 15 QR',
+      summary: `A hybrid application (web/Android) that integrates <span class="text-danger">sign-up, login, qr code generation, qr code scanner, user profiles, gps tracking and geocoding</span>, built with <span class="text-danger">Ionic + Firebase</span>.`,
+      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      websiteLink: '#',
+      githubLink: 'https://github.com/DiracSpace/GPSTracking',
+    },
+    {
+      title: 'CBTIS 15 Maps',
+      summary: `A hybrid application (web/Android) that integrates <span class="text-danger">OpenStreetMaps, gps tracking and gps routing</span>, built with <span class="text-danger">Ionic</span>.`,
+      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      websiteLink: '#',
+      githubLink: 'https://github.com/AlexCR97/CBTIS-15-Maps',
+    },
+    {
+      title: 'Coffee Shop',
+      summary: `An Android application to submit orders to a Coffee Shop, built with <span class="text-danger">Android Studio + SQLite</span>.`,
+      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      websiteLink: '#',
+      githubLink: 'https://github.com/AlexCR97/Coffee-Shop',
+    },
+    {
+      title: 'Puppies Memorama',
+      summary: `A web application to play the Memorama card game... with puppies! Built with <span class="text-danger">Vue.js</span>.`,
+      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+      websiteLink: '#',
+      githubLink: 'https://github.com/AlexCR97/Puppies-Memorama.git',
     },
   ];
 
