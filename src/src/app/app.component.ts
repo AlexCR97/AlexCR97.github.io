@@ -1,4 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
 import { FabOptionDef } from './components/fab/FabOptionDef';
 
@@ -30,7 +36,7 @@ interface ProjectDef {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnDestroy {
   @ViewChild('main', { static: true })
   mainElement?: ElementRef<HTMLElement>;
 
@@ -330,6 +336,26 @@ export class AppComponent {
     },
   ];
 
+  private blurObserver?: IntersectionObserver;
+  private fadeObserver?: IntersectionObserver;
+
+  ngAfterViewInit() {
+    this.blurObserver = this.attachObserverForBlurAnimation();
+    this.fadeObserver = this.attachObserverForFadeAnimation();
+  }
+
+  ngOnDestroy(): void {
+    if (this.blurObserver) {
+      this.blurObserver.disconnect();
+      this.blurObserver = undefined;
+    }
+
+    if (this.fadeObserver) {
+      this.fadeObserver.disconnect();
+      this.fadeObserver = undefined;
+    }
+  }
+
   onSectionButtonClicked(section: SectionDef) {
     const sectionElement = document.getElementById(section.id);
 
@@ -361,5 +387,37 @@ export class AppComponent {
       behavior: 'smooth',
       top: sectionElement.offsetTop,
     });
+  }
+
+  private attachObserverForBlurAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('blur-in');
+        } else {
+          entry.target.classList.remove('blur-in');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.blur-out');
+    hiddenElements.forEach((el) => observer.observe(el));
+    return observer;
+  }
+
+  private attachObserverForFadeAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        } else {
+          entry.target.classList.remove('fade-in');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.fade-out');
+    hiddenElements.forEach((el) => observer.observe(el));
+    return observer;
   }
 }
