@@ -36,6 +36,14 @@
   </header>
 
   <main class="w-100 h-100" style="position: relative; overflow-y: auto">
+    <div
+      id="fabContainer"
+      class="position-fixed end-0 bottom-0 p-2 p-sm-3"
+      style="z-index: 3"
+    >
+      <app-fab [options]="fabOptions"></app-fab>
+    </div>
+
     <section
       id="mainSummary"
       class="d-flex justify-content-center align-items-center"

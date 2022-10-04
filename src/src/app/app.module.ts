@@ -10,6 +10,8 @@ import { WorkExpCardComponent } from './components/work-exp-card/work-exp-card.c
 import { DotsComponent } from './components/dots/dots.component';
 import { TechStackCardComponent } from './components/tech-stack-card/tech-stack-card.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FabComponent } from './components/fab/fab.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     WorkExpCardComponent,
     DotsComponent,
     TechStackCardComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    CarouselComponent,
+    FabComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
+import { FabOptionDef } from './components/fab/FabOptionDef';
 
 interface SectionDef {
   id: string;
@@ -61,6 +62,34 @@ export class AppComponent {
   ];
 
   activeSectionId?: string;
+
+  readonly fabOptions: FabOptionDef[] = [
+    {
+      icon: 'person',
+      label: 'About Me',
+      click: () => this.tryScrollToSection('aboutMeSection'),
+    },
+    {
+      icon: 'briefcase',
+      label: 'My Experience',
+      click: () => this.tryScrollToSection('workExperienceSection'),
+    },
+    {
+      icon: 'code',
+      label: 'My Favorite Technologies',
+      click: () => this.tryScrollToSection('technologiesSection'),
+    },
+    {
+      icon: 'kanban',
+      label: 'Side Projects',
+      click: () => this.tryScrollToSection('sideProjectsSection'),
+    },
+    {
+      icon: 'emoji-laughing',
+      label: 'Fun Facts',
+      click: () => this.tryScrollToSection('funFactsSection'),
+    },
+  ];
 
   readonly workExperienceItems1: WorkExperienceItem[] = [
     {
@@ -225,8 +254,8 @@ export class AppComponent {
       githubLink: 'https://github.com/AlexCR97/Viex.CloudPlatform.Main',
       images: [
         'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
       ],
     },
     {
@@ -236,8 +265,8 @@ export class AppComponent {
       githubLink: 'https://github.com/DiracSpace/GPSTracking',
       images: [
         'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
       ],
     },
     {
@@ -247,8 +276,8 @@ export class AppComponent {
       githubLink: 'https://github.com/AlexCR97/CBTIS-15-Maps',
       images: [
         'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
       ],
     },
     {
@@ -258,8 +287,8 @@ export class AppComponent {
       githubLink: 'https://github.com/AlexCR97/Coffee-Shop',
       images: [
         'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
       ],
     },
     {
@@ -269,8 +298,8 @@ export class AppComponent {
       githubLink: 'https://github.com/AlexCR97/Puppies-Memorama.git',
       images: [
         'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
       ],
     },
   ];
@@ -280,6 +309,23 @@ export class AppComponent {
 
     if (sectionElement) {
       this.activeSectionId = section.id;
+
+      sectionElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    }
+  }
+
+  private tryScrollToSection(id: string) {
+    console.log('tryScrollToSection', id);
+
+    const sectionElement = document.getElementById(id);
+    console.log('sectionElement', sectionElement);
+
+    if (sectionElement) {
+      this.activeSectionId = id;
 
       sectionElement.scrollIntoView({
         behavior: 'smooth',

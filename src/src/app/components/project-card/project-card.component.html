@@ -4,18 +4,21 @@
     <p [innerHtml]="summary"></p>
     <div class="d-flex">
       <i
-        class="bi bi-browser-chrome me-3"
-        style="color: #d6372b; font-size: 1.5rem"
-      ></i>
-      <i
-        class="bi bi-github me-3"
-        style="color: #692a84; font-size: 1.5rem"
+        *ngFor="let button of iconButtons"
+        class="bi me-3"
+        [ngClass]="'bi-' + button.icon"
+        [style.color]="button.iconColor"
+        style="font-size: 1.5rem"
+        role="button"
+        (click)="button.click()"
       ></i>
     </div>
   </div>
-  <div
-    class="col-12 col-lg-6 d-flex justify-content-center align-items-center m-0 p-0"
-  >
-    <img [src]="images[0]" style="border-radius: 10px; width: 100%" />
+  <div class="col-12 col-lg-6 m-0 p-0">
+    <app-carousel
+      [images]="images"
+      style="height: 400px; border-radius: 20px; overflow: hidden"
+    ></app-carousel>
+    <!-- <img [src]="images[0]" style="border-radius: 10px; width: 100%" /> -->
   </div>
 </div>

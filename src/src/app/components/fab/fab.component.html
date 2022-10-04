@@ -1,0 +1,50 @@
+<ul *ngIf="!collapsed" class="m-0 p-0" style="list-style: none">
+  <li
+    *ngFor="let option of options"
+    class="d-flex justify-content-end align-items-center w-100 m-0 mb-3 p-0 pe-2"
+    role="button"
+    (click)="option.click ? option.click() : undefined"
+  >
+    <span *ngIf="option.label" class="fw-bold me-2">
+      {{ option.label }}
+    </span>
+    <ng-template
+      *ngIf="option.icon"
+      [ngTemplateOutlet]="iconButton"
+      [ngTemplateOutletContext]="{
+        icon: option.icon,
+        iconSize: '1rem',
+        variant: variant,
+        size: '45px'
+      }"
+    ></ng-template>
+  </li>
+</ul>
+
+<div class="d-flex justify-content-end">
+  <button
+    class="btn rounded-circle d-flex justify-content-center align-items-center shadow m-0 p-0"
+    [ngClass]="'btn-' + variant"
+    style="width: 60px; height: 60px"
+    (click)="collapsed = !collapsed"
+  >
+    <i class="bi" [ngClass]="'bi-' + icon" style="font-size: 2rem"></i>
+  </button>
+</div>
+
+<ng-template
+  #iconButton
+  let-icon="icon"
+  let-iconSize="iconSize"
+  let-variant="variant"
+  let-size="size"
+>
+  <button
+    class="btn rounded-circle d-flex justify-content-center align-items-center shadow m-0 p-0"
+    [ngClass]="'btn-' + variant"
+    [style.width]="size"
+    [style.height]="size"
+  >
+    <i class="bi" [ngClass]="'bi-' + icon" [style.font-size]="iconSize"></i>
+  </button>
+</ng-template>
