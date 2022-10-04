@@ -14,6 +14,7 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FabComponent } from './components/fab/fab.component';
 import { FadeAnimationComponent } from './components/fade-animation/fade-animation.component';
+import { LocalePipe } from './localization/locale.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FadeAnimationComponent } from './components/fade-animation/fade-animati
     CarouselComponent,
     FabComponent,
     FadeAnimationComponent,
+    LocalePipe,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
   providers: [],

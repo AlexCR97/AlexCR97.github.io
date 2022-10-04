@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
-import { randomIntFromRange } from 'src/utils';
+import { randomIntFromRange } from 'src/app/utils';
 
 @Component({
   selector: 'app-carousel',

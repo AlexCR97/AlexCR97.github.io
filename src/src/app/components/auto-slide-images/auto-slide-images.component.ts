@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
-import { randomIntFromRange } from 'src/utils';
+import { randomIntFromRange } from 'src/app/utils';
 import { AutoSlideImage } from './AutoSlideImage';
 
 @Component({
