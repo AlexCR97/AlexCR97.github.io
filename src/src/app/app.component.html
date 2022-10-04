@@ -59,10 +59,12 @@
           <app-avatar size="250px"></app-avatar>
         </div>
 
-        <p class="text-center mb-5">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita,
-          eum praesentium. Quidem officia tenetur velit commodi.
-        </p>
+        <div class="container mb-5">
+          <p class="text-center m-0">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita,
+            eum praesentium. Quidem officia tenetur velit commodi.
+          </p>
+        </div>
 
         <p class="text-center mb-3">Feel free to join me!</p>
 
@@ -116,139 +118,123 @@
       <h1><i class="bi bi-briefcase me-2"></i> My Work Experience</h1>
       <hr class="mb-4" />
 
-      <section>
-        <h4>2021 - Present</h4>
-        <div
-          *ngFor="let item of workExperienceItems1"
-          class="border-bottom pb-3 mb-4"
+      <section class="mb-4">
+        <h3 class="text-center mb-4">Present</h3>
+
+        <app-dots [startEven]="false"></app-dots>
+
+        <ng-container
+          *ngFor="let item of workExperienceItems1; let index = index"
         >
-          <p class="mb-2">
-            <b>{{ item.jobTitle }}</b> at
-            <span [innerHtml]="item.companyName"></span>
-          </p>
-          <div class="d-flex align-items-center mb-2">
-            <p class="m-0 me-4">
-              <i class="bi bi-clock me-1"></i> {{ item.jobSchedule }}
-            </p>
-            <p class="m-0 me-4">
-              <i class="bi bi-building me-1"></i> {{ item.jobType }}
-            </p>
-            <p class="m-0 me-4">
-              <i class="bi bi-geo-alt me-1"></i> {{ item.jobLocation }}
-            </p>
-          </div>
-          <p [innerHtml]="item.summary" class="m-0"></p>
-        </div>
+          <app-work-exp-card
+            class="mb-4"
+            [jobTitle]="item.jobTitle"
+            [companyName]="item.companyName"
+            [jobSchedule]="item.jobSchedule"
+            [jobType]="item.jobType"
+            [jobLocation]="item.jobLocation"
+            [summary]="item.summary"
+          ></app-work-exp-card>
+          <app-dots [startEven]="index % 2 == 0"></app-dots>
+        </ng-container>
       </section>
 
       <section>
-        <h4>2020 - 2021</h4>
-        <div
-          *ngFor="let item of workExperienceItems2"
-          class="border-bottom pb-3 mb-4"
+        <h3 class="text-center mb-4">2021</h3>
+
+        <app-dots></app-dots>
+
+        <ng-container
+          *ngFor="let item of workExperienceItems2; let index = index"
         >
-          <p class="mb-2">
-            <b>{{ item.jobTitle }}</b> at
-            <span [innerHtml]="item.companyName"></span>
-          </p>
-          <div class="d-flex align-items-center mb-2">
-            <p class="m-0 me-4">
-              <i class="bi bi-clock me-1"></i> {{ item.jobSchedule }}
-            </p>
-            <p class="m-0 me-4">
-              <i class="bi bi-building me-1"></i> {{ item.jobType }}
-            </p>
-            <p class="m-0 me-4">
-              <i class="bi bi-geo-alt me-1"></i> {{ item.jobLocation }}
-            </p>
-          </div>
-          <p [innerHtml]="item.summary" class="m-0"></p>
-        </div>
+          <app-work-exp-card
+            class="mb-4"
+            [jobTitle]="item.jobTitle"
+            [companyName]="item.companyName"
+            [jobSchedule]="item.jobSchedule"
+            [jobType]="item.jobType"
+            [jobLocation]="item.jobLocation"
+            [summary]="item.summary"
+          ></app-work-exp-card>
+          <app-dots [startEven]="index % 2 != 0"></app-dots>
+        </ng-container>
       </section>
+
+      <h3 class="text-center">2020</h3>
     </section>
 
     <section id="technologiesSection" class="container py-5">
       <h1><i class="bi bi-code me-2"></i> My Favorite Technologies</h1>
-      <hr class="mb-4" />
+      <hr class="mb-5" />
 
       <p class="text-center mb-4">
-        My preffered stack is <span class="text-danger">MAANC</span>... or you
-        might know it as:
+        My preffered stack is <span class="text-danger">MAANC</span> (yes, i
+        just came up with that), or you might know it as:
       </p>
 
-      <div class="d-flex justify-content-center align-items-center mb-5">
-        <div *ngFor="let item of prefferedStackItems" class="mx-5">
-          <div class="d-flex justify-content-center mb-3">
+      <div id="prefferedStackRow" class="row m-0 p-0 mb-5">
+        <div
+          *ngFor="let item of prefferedStackItems"
+          class="col m-0 p-1 p-md-2 p-lg-5"
+          [ngClass]="'col-' + 12 / prefferedStackItems.length"
+        >
+          <div>
             <img
+              class="d-block w-100 m-auto mb-4"
               [src]="item.src"
               [alt]="item.alt"
-              style="width: 120px; height: 120px"
             />
+            <h6 class="d-block d-md-none text-center">
+              {{ item.title }}
+            </h6>
+            <h3 class="d-none d-md-block text-center">
+              {{ item.title }}
+            </h3>
           </div>
-          <h3 class="text-center">{{ item.title }}</h3>
         </div>
       </div>
 
-      <p class="text-center">But I have also worked with:</p>
+      <p class="text-center mb-5">But I have also worked with:</p>
 
       <div class="mb-5">
         <h3 class="text-center mb-4">Frontend</h3>
-        <app-auto-slide-images
-          [images]="frontendImages"
-        ></app-auto-slide-images>
+        <div class="shadow px-2 pt-4 pb-3" style="border-radius: 20px">
+          <app-auto-slide-images
+            [images]="frontendImages"
+          ></app-auto-slide-images>
+        </div>
       </div>
 
       <div class="mb-5">
         <h3 class="text-center mb-4">Databases</h3>
-        <app-auto-slide-images [images]="databaseItems"></app-auto-slide-images>
+        <div class="shadow px-2 pt-4 pb-3" style="border-radius: 20px">
+          <app-auto-slide-images
+            [images]="databaseItems"
+          ></app-auto-slide-images>
+        </div>
       </div>
 
       <div class="mb-5">
         <h3 class="text-center mb-4">Tools and Libraries</h3>
-        <app-auto-slide-images [images]="toolsItems"></app-auto-slide-images>
+        <div class="shadow px-2 pt-4 pb-3" style="border-radius: 20px">
+          <app-auto-slide-images [images]="toolsItems"></app-auto-slide-images>
+        </div>
       </div>
     </section>
 
     <section id="sideProjectsSection" class="container pb-5 mb-5">
-      <div class="shadow" style="border-radius: 20px">
-        <div class="header px-4 py-3 border-bottom">
-          <h1><i class="bi bi-kanban me-2"></i> Side Projects</h1>
-        </div>
-        <section *ngFor="let project of sideProjects" class="p-4 border-bottom">
-          <h5>{{ project.title }}</h5>
-          <p [innerHtml]="project.summary"></p>
-          <div class="row mb-3">
-            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
-              <img
-                [src]="project.img1"
-                style="border-radius: 10px; width: 100%"
-              />
-            </div>
-            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
-              <img
-                [src]="project.img2"
-                style="border-radius: 10px; width: 100%"
-              />
-            </div>
-            <div class="col-12 col-lg-4 d-flex justify-content-center p-3">
-              <img
-                [src]="project.img3"
-                style="border-radius: 10px; width: 100%"
-              />
-            </div>
-          </div>
-          <div class="d-flex justify-content-end">
-            <i
-              class="bi bi-browser-chrome ps-3"
-              style="color: #d6372b; font-size: 1.5rem"
-            ></i>
-            <i
-              class="bi bi-github ps-3"
-              style="color: #692a84; font-size: 1.5rem"
-            ></i>
-          </div>
-        </section>
-      </div>
+      <h1><i class="bi bi-kanban me-2"></i> Side Projects</h1>
+      <hr class="mb-5" />
+
+      <app-project-card
+        *ngFor="let project of sideProjects"
+        class="mb-5"
+        [title]="project.title"
+        [summary]="project.summary"
+        [images]="project.images"
+        [websiteLink]="project.websiteLink"
+        [githubLink]="project.githubLink"
+      ></app-project-card>
     </section>
 
     <section id="funFactsSection" class="container pb-5 mb-5">

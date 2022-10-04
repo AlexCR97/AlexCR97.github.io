@@ -1,0 +1,21 @@
+<div class="row m-0 p-0">
+  <div class="col-12 col-lg-6 col-6 m-0 p-4">
+    <h3 class="mb-3">{{ title }}</h3>
+    <p [innerHtml]="summary"></p>
+    <div class="d-flex">
+      <i
+        class="bi bi-browser-chrome me-3"
+        style="color: #d6372b; font-size: 1.5rem"
+      ></i>
+      <i
+        class="bi bi-github me-3"
+        style="color: #692a84; font-size: 1.5rem"
+      ></i>
+    </div>
+  </div>
+  <div
+    class="col-12 col-lg-6 d-flex justify-content-center align-items-center m-0 p-0"
+  >
+    <img [src]="images[0]" style="border-radius: 10px; width: 100%" />
+  </div>
+</div>

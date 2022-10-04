@@ -6,13 +6,21 @@ import { AppComponent } from './app.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { ParticlesBgComponent } from './components/particles-bg/particles-bg.component';
 import { AutoSlideImagesComponent } from './components/auto-slide-images/auto-slide-images.component';
+import { WorkExpCardComponent } from './components/work-exp-card/work-exp-card.component';
+import { DotsComponent } from './components/dots/dots.component';
+import { TechStackCardComponent } from './components/tech-stack-card/tech-stack-card.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AvatarComponent,
     ParticlesBgComponent,
-    AutoSlideImagesComponent
+    AutoSlideImagesComponent,
+    WorkExpCardComponent,
+    DotsComponent,
+    TechStackCardComponent,
+    ProjectCardComponent
   ],
   imports: [
     BrowserModule,
