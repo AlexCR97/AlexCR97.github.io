@@ -1,0 +1,11 @@
+<div
+  class="position-relative d-flex justify-content-center align-items-center bg-dark w-100 h-100"
+>
+  <img
+    *ngFor="let img of images; let index = index"
+    [src]="img"
+    alt="Carousel Image"
+    class="carousel-img"
+    [ngClass]="getImageClass(index)"
+  />
+</div>

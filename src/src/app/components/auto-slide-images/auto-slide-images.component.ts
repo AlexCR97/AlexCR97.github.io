@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { randomIntFromRange } from 'src/utils';
 import { AutoSlideImage } from './AutoSlideImage';
 
 @Component({
@@ -31,7 +32,7 @@ export class AutoSlideImagesComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const scrollTimeout = this.randomIntFromRange(0, 3000);
+    const scrollTimeout = randomIntFromRange(0, 3000);
 
     setTimeout(() => {
       this.scrollToEnd();
@@ -50,8 +51,8 @@ export class AutoSlideImagesComponent implements AfterViewInit, OnDestroy {
   }
 
   private scrollToEnd() {
-    const scrollAmount = this.randomIntFromRange(1, 2);
-    const scrollInterval = this.randomIntFromRange(10, 20);
+    const scrollAmount = randomIntFromRange(1, 2);
+    const scrollInterval = randomIntFromRange(10, 20);
     this.intervalSubscription = interval(scrollInterval).subscribe(() => {
       this.el.scrollLeft += scrollAmount;
       if (this.el.offsetWidth + this.el.scrollLeft >= this.el.scrollWidth) {
@@ -65,8 +66,8 @@ export class AutoSlideImagesComponent implements AfterViewInit, OnDestroy {
   }
 
   private scrollToStart() {
-    const scrollAmount = this.randomIntFromRange(1, 2);
-    const scrollInterval = this.randomIntFromRange(10, 20);
+    const scrollAmount = randomIntFromRange(1, 2);
+    const scrollInterval = randomIntFromRange(10, 20);
     this.intervalSubscription = interval(scrollInterval).subscribe(() => {
       this.el.scrollLeft -= scrollAmount;
       if (this.el.scrollLeft <= 0) {
@@ -77,9 +78,5 @@ export class AutoSlideImagesComponent implements AfterViewInit, OnDestroy {
         }, 0);
       }
     });
-  }
-
-  private randomIntFromRange(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }

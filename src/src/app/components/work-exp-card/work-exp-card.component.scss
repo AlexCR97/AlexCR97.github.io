@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  border-radius: 20px;
+}
+
+.label {
+  font-size: 0.9rem;
+
+  // apply when screen is less than 420px
+  @media screen and (max-width: 420px) {
+    font-size: 0.8rem;
+  }
+}

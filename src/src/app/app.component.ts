@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
+import { FabOptionDef } from './components/fab/FabOptionDef';
 
 interface SectionDef {
   id: string;
@@ -16,13 +17,42 @@ interface WorkExperienceItem {
   jobLocation: 'Onshore' | 'Offshore';
 }
 
+interface ProjectDef {
+  title: string;
+  summary: string;
+  images: string[];
+  websiteLink: string;
+  githubLink: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @ViewChild('main', { static: true })
+  mainElement?: ElementRef<HTMLElement>;
+
   readonly sidenavWidth = '250px';
+
+  readonly mainLinks: any[] = [
+    {
+      icon: 'linkedin',
+      iconColor: '#0a66c2',
+      click: () => window.open('https://www.linkedin.com/in/viex/', '_blank'),
+    },
+    {
+      icon: 'github',
+      iconColor: '#692a84',
+      click: () => window.open('https://github.com/AlexCR97', '_blank'),
+    },
+    {
+      icon: 'google',
+      iconColor: '#d6372b',
+      click: () => window.open('mailto:pablo.acr97@gmail.com', '_blank'),
+    },
+  ];
 
   readonly sections: SectionDef[] = [
     {
@@ -53,6 +83,39 @@ export class AppComponent {
   ];
 
   activeSectionId?: string;
+
+  readonly fabOptions: FabOptionDef[] = [
+    {
+      icon: 'house',
+      label: 'Home',
+      click: () => this.tryScrollToSection('mainSummary'),
+    },
+    {
+      icon: 'person',
+      label: 'About Me',
+      click: () => this.tryScrollToSection('aboutMeSection'),
+    },
+    {
+      icon: 'briefcase',
+      label: 'My Experience',
+      click: () => this.tryScrollToSection('workExperienceSection'),
+    },
+    {
+      icon: 'code',
+      label: 'My Favorite Technologies',
+      click: () => this.tryScrollToSection('technologiesSection'),
+    },
+    {
+      icon: 'kanban',
+      label: 'Side Projects',
+      click: () => this.tryScrollToSection('sideProjectsSection'),
+    },
+    {
+      icon: 'emoji-laughing',
+      label: 'Fun Facts',
+      click: () => this.tryScrollToSection('funFactsSection'),
+    },
+  ];
 
   readonly workExperienceItems1: WorkExperienceItem[] = [
     {
@@ -209,51 +272,61 @@ export class AppComponent {
     },
   ];
 
-  readonly sideProjects: any[] = [
+  readonly sideProjects: ProjectDef[] = [
     {
       title: 'Viex Cloud Platform',
       summary: `A <span class="text-danger">Saas</span> that offers services such as scheduled jobs, database hosting, caching, IdP, among others, built with <span class="text-danger">Angular + .NET Core + MongoDB</span>. Still a work in progress, but the most ambicuos side project I've worked on.`,
-      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/Viex.CloudPlatform.Main',
+      images: [
+        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
+      ],
     },
     {
       title: 'CBTIS 15 QR',
       summary: `A hybrid application (web/Android) that integrates <span class="text-danger">sign-up, login, qr code generation, qr code scanner, user profiles, gps tracking and geocoding</span>, built with <span class="text-danger">Ionic + Firebase</span>.`,
-      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
       websiteLink: '#',
       githubLink: 'https://github.com/DiracSpace/GPSTracking',
+      images: [
+        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
+      ],
     },
     {
       title: 'CBTIS 15 Maps',
       summary: `A hybrid application (web/Android) that integrates <span class="text-danger">OpenStreetMaps, gps tracking and gps routing</span>, built with <span class="text-danger">Ionic</span>.`,
-      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/CBTIS-15-Maps',
+      images: [
+        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
+      ],
     },
     {
       title: 'Coffee Shop',
       summary: `An Android application to submit orders to a Coffee Shop, built with <span class="text-danger">Android Studio + SQLite</span>.`,
-      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/Coffee-Shop',
+      images: [
+        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
+      ],
     },
     {
       title: 'Puppies Memorama',
       summary: `A web application to play the Memorama card game... with puppies! Built with <span class="text-danger">Vue.js</span>.`,
-      img1: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img2: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-      img3: 'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/Puppies-Memorama.git',
+      images: [
+        'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
+        'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
+        'https://i.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc',
+      ],
     },
   ];
 
@@ -269,5 +342,24 @@ export class AppComponent {
         inline: 'nearest',
       });
     }
+  }
+
+  private tryScrollToSection(id: string) {
+    if (!this.mainElement) {
+      return;
+    }
+
+    const sectionElement = document.getElementById(id);
+
+    if (!sectionElement) {
+      return;
+    }
+
+    this.activeSectionId = id;
+
+    this.mainElement.nativeElement.scrollTo({
+      behavior: 'smooth',
+      top: sectionElement.offsetTop,
+    });
   }
 }

@@ -1,0 +1,6 @@
+<div
+  *ngFor="let dot of dots; let index = index"
+  class="d-flex justify-content-center mb-3"
+>
+  <div class="bg-primary rounded-circle" [ngStyle]="getStyle(index)"></div>
+</div>

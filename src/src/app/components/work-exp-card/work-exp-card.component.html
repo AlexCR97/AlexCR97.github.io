@@ -1,0 +1,16 @@
+<p class="mb-2">
+  <b>{{ jobTitle }}</b> at
+  <span [innerHtml]="companyName"></span>
+</p>
+<div class="d-flex align-items-center mb-2">
+  <p class="label m-0 me-4">
+    <i class="bi bi-clock me-1"></i> {{ jobSchedule }}
+  </p>
+  <p class="label m-0 me-4">
+    <i class="bi bi-building me-1"></i> {{ jobType }}
+  </p>
+  <p class="label m-0 me-4">
+    <i class="bi bi-geo-alt me-1"></i> {{ jobLocation }}
+  </p>
+</div>
+<p [innerHtml]="summary" class="m-0"></p>
