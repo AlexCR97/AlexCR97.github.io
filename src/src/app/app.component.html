@@ -35,13 +35,13 @@
     </h2>
   </header>
 
-  <main class="w-100 h-100" style="position: relative; overflow-y: auto">
+  <main #main class="w-100 h-100" style="position: relative; overflow-y: auto">
     <div
       id="fabContainer"
       class="position-fixed end-0 bottom-0 p-2 p-sm-3"
       style="z-index: 3"
     >
-      <app-fab [options]="fabOptions"></app-fab>
+      <app-fab [options]="fabOptions" icon="list" variant="dark"></app-fab>
     </div>
 
     <section
@@ -67,27 +67,24 @@
           <app-avatar size="250px"></app-avatar>
         </div>
 
-        <div class="container mb-5">
-          <p class="text-center m-0">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita,
-            eum praesentium. Quidem officia tenetur velit commodi.
+        <div class="container mb-3">
+          <p class="fw-bold text-center m-0">
+            I'm a fullstack web developer. UI/UX, APIs, microservices,
+            databases, 3rd party integrations, CI/CD, you name it!
           </p>
         </div>
 
-        <p class="text-center mb-3">Feel free to join me!</p>
+        <p class="text-center mb-2">Let's get in touch!</p>
 
         <div class="d-flex justify-content-center">
           <i
-            class="bi bi-linkedin mx-4"
-            style="color: #0a66c2; font-size: 2rem"
-          ></i>
-          <i
-            class="bi bi-github mx-4"
-            style="color: #692a84; font-size: 2rem"
-          ></i>
-          <i
-            class="bi bi-discord mx-4"
-            style="color: #5564de; font-size: 2rem"
+            *ngFor="let item of mainLinks"
+            class="bi mx-4"
+            [ngClass]="'bi-' + item.icon"
+            [style.color]="item.iconColor"
+            style="font-size: 2rem"
+            role="button"
+            (click)="item.click()"
           ></i>
         </div>
       </div>

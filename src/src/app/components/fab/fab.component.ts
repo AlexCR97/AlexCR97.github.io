@@ -16,4 +16,13 @@ export class FabComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onFabOptionClicked(option: FabOptionDef) {
+    if (!option.click) {
+      return;
+    }
+
+    option.click();
+    this.collapsed = true;
+  }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { TechStackCardComponent } from './components/tech-stack-card/tech-stack-
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FabComponent } from './components/fab/fab.component';
+import { FadeAnimationComponent } from './components/fade-animation/fade-animation.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,11 @@ import { FabComponent } from './components/fab/fab.component';
     TechStackCardComponent,
     ProjectCardComponent,
     CarouselComponent,
-    FabComponent
+    FabComponent,
+    FadeAnimationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

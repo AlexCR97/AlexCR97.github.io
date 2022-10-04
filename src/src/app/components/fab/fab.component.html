@@ -1,11 +1,12 @@
-<ul *ngIf="!collapsed" class="m-0 p-0" style="list-style: none">
+<ul *ngIf="!collapsed" app-fade-animation class="fab-options m-0 p-0">
   <li
     *ngFor="let option of options"
-    class="d-flex justify-content-end align-items-center w-100 m-0 mb-3 p-0 pe-2"
+    class="d-flex justify-content-end align-items-center w-100 bg-light shadow m-0 mb-3 p-0"
+    style="border-radius: 50px"
     role="button"
-    (click)="option.click ? option.click() : undefined"
+    (click)="onFabOptionClicked(option)"
   >
-    <span *ngIf="option.label" class="fw-bold me-2">
+    <span *ngIf="option.label" class="fw-bold ms-3 me-2">
       {{ option.label }}
     </span>
     <ng-template
@@ -28,7 +29,7 @@
     style="width: 60px; height: 60px"
     (click)="collapsed = !collapsed"
   >
-    <i class="bi" [ngClass]="'bi-' + icon" style="font-size: 2rem"></i>
+    <i class="bi" [ngClass]="'bi-' + icon" style="font-size: 1.8rem"></i>
   </button>
 </div>
 

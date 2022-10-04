@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
 import { FabOptionDef } from './components/fab/FabOptionDef';
 
@@ -31,7 +31,28 @@ interface ProjectDef {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @ViewChild('main', { static: true })
+  mainElement?: ElementRef<HTMLElement>;
+
   readonly sidenavWidth = '250px';
+
+  readonly mainLinks: any[] = [
+    {
+      icon: 'linkedin',
+      iconColor: '#0a66c2',
+      click: () => window.open('https://www.linkedin.com/in/viex/', '_blank'),
+    },
+    {
+      icon: 'github',
+      iconColor: '#692a84',
+      click: () => window.open('https://github.com/AlexCR97', '_blank'),
+    },
+    {
+      icon: 'google',
+      iconColor: '#d6372b',
+      click: () => window.open('mailto:pablo.acr97@gmail.com', '_blank'),
+    },
+  ];
 
   readonly sections: SectionDef[] = [
     {
@@ -64,6 +85,11 @@ export class AppComponent {
   activeSectionId?: string;
 
   readonly fabOptions: FabOptionDef[] = [
+    {
+      icon: 'house',
+      label: 'Home',
+      click: () => this.tryScrollToSection('mainSummary'),
+    },
     {
       icon: 'person',
       label: 'About Me',
@@ -319,19 +345,21 @@ export class AppComponent {
   }
 
   private tryScrollToSection(id: string) {
-    console.log('tryScrollToSection', id);
+    if (!this.mainElement) {
+      return;
+    }
 
     const sectionElement = document.getElementById(id);
-    console.log('sectionElement', sectionElement);
 
-    if (sectionElement) {
-      this.activeSectionId = id;
-
-      sectionElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
+    if (!sectionElement) {
+      return;
     }
+
+    this.activeSectionId = id;
+
+    this.mainElement.nativeElement.scrollTo({
+      behavior: 'smooth',
+      top: sectionElement.offsetTop,
+    });
   }
 }

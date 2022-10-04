@@ -10,6 +10,7 @@ import { randomIntFromRange } from 'src/utils';
 export class CarouselComponent implements AfterViewInit, OnDestroy {
   @Input() images: string[] = [];
   @Input() interval = 2000;
+  @Input() offset = randomIntFromRange(0, 5000);
 
   private currentImageIndex = 0;
   private intervalSubs?: Subscription;
@@ -17,8 +18,6 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   constructor() {}
 
   ngAfterViewInit(): void {
-    const offset = randomIntFromRange(0, 3000);
-
     setTimeout(() => {
       this.intervalSubs = interval(this.interval).subscribe(() => {
         if (this.currentImageIndex < this.images.length) {
@@ -29,7 +28,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
           this.currentImageIndex = 0;
         }
       });
-    }, offset);
+    }, this.offset);
   }
 
   ngOnDestroy(): void {
