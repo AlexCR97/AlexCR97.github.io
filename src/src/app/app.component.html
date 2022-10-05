@@ -20,7 +20,6 @@
       type="button"
       class="list-group-item list-group-item-action"
       [ngClass]="{ active: activeSectionId == section.id }"
-      (click)="onSectionButtonClicked(section)"
     >
       <i class="bi me-2" [ngClass]="'bi-' + section.icon"></i>
       {{ section.label }}
@@ -35,18 +34,40 @@
     </h2>
   </header>
 
-  <main #main class="w-100 h-100" style="position: relative; overflow-y: auto">
+  <main
+    #main
+    class="w-100 h-100"
+    style="position: relative; overflow-x: hidden; overflow-y: auto"
+  >
     <div
-      id="fabContainer"
+      id="langFabContainer"
+      class="position-fixed start-0 bottom-0 p-2 p-sm-3"
+      style="z-index: 3"
+    >
+      <app-fab
+        class="blur-out"
+        icon="translate"
+        variant="dark"
+        (click)="onLangFabClicked()"
+      ></app-fab>
+    </div>
+
+    <div
+      id="menuFabContainer"
       class="position-fixed end-0 bottom-0 p-2 p-sm-3"
       style="z-index: 3"
     >
-      <app-fab [options]="fabOptions" icon="list" variant="dark"></app-fab>
+      <app-fab
+        class="blur-out"
+        [options]="fabOptions"
+        icon="list"
+        variant="dark"
+      ></app-fab>
     </div>
 
     <section
       id="mainSummary"
-      class="d-flex justify-content-center align-items-center"
+      class="blur-out d-flex justify-content-center align-items-center mb-5"
       style="
         height: 100vh;
         background: linear-gradient(
@@ -61,7 +82,9 @@
 
       <div style="z-index: 2">
         <h1 class="text-center mb-2" style="font-size: 3rem">Pablo Castillo</h1>
-        <h2 class="text-center mb-5">Web Developer</h2>
+        <h2 class="text-center mb-5">
+          {{ "mainSummarySection.jobTitle" | locale }}
+        </h2>
 
         <div class="d-flex justify-content-center mb-5">
           <app-avatar size="250px"></app-avatar>
@@ -69,12 +92,13 @@
 
         <div class="container mb-3">
           <p class="fw-bold text-center m-0">
-            I'm a fullstack web developer. UI/UX, APIs, microservices,
-            databases, 3rd party integrations, CI/CD, you name it!
+            {{ "mainSummarySection.description" | locale }}
           </p>
         </div>
 
-        <p class="text-center mb-2">Let's get in touch!</p>
+        <p class="text-center mb-2">
+          {{ "mainSummarySection.subtitle" | locale }}
+        </p>
 
         <div class="d-flex justify-content-center">
           <i
@@ -91,25 +115,16 @@
     </section>
 
     <section id="aboutMeSection" class="container py-5">
-      <h1><i class="bi bi-person me-2"></i> About Me</h1>
+      <h1>
+        <i class="bi bi-person me-2"></i> {{ "aboutMeSection.title" | locale }}
+      </h1>
       <hr class="mb-4" />
 
       <div class="row">
-        <div class="col-12 col-lg-6 p-3">
-          <p>
-            I do development, supervision and maintenance of web applications. I
-            have experience in backend development; frontend development;
-            database management; code reviews; version control; organization,
-            coordination and delegation of tasks; troubleshooting and bug
-            fixing; maintenance and optimization of systems; software
-            architecture design and design pattern implementations. I've worked
-            with Microsoft tools and platforms like Visual Studio, .NET Core,
-            Azure Repos, Azure Active Directory, Azure DevOps and Automated
-            Pipelines. I keep active communication in English collaborating
-            remotely with people from various places in the world.
-          </p>
+        <div class="fade-out fade-out-left col-12 col-lg-6 p-3">
+          <p [innerHtml]="'aboutMeSection.paragraph' | locale"></p>
         </div>
-        <div class="col-12 col-lg-6 p-3">
+        <div class="fade-out fade-out-right col-12 col-lg-6 p-3">
           <img
             src="https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
             alt="About Me"
@@ -120,19 +135,27 @@
     </section>
 
     <section id="workExperienceSection" class="container py-5">
-      <h1><i class="bi bi-briefcase me-2"></i> My Work Experience</h1>
+      <h1>
+        <i class="bi bi-briefcase me-2"></i>
+        {{ "myWorkExpSection.title" | locale }}
+      </h1>
       <hr class="mb-4" />
 
       <section class="mb-4">
-        <h3 class="text-center mb-4">Present</h3>
+        <h3 class="fade-out fade-out-bottom text-center mb-4">
+          {{ "myWorkExpSection.present" | locale }}
+        </h3>
 
-        <app-dots [startEven]="false"></app-dots>
+        <app-dots
+          class="fade-out fade-out-bottom"
+          [startEven]="false"
+        ></app-dots>
 
         <ng-container
           *ngFor="let item of workExperienceItems1; let index = index"
         >
           <app-work-exp-card
-            class="mb-4"
+            class="fade-out fade-out-bottom mb-4"
             [jobTitle]="item.jobTitle"
             [companyName]="item.companyName"
             [jobSchedule]="item.jobSchedule"
@@ -140,20 +163,24 @@
             [jobLocation]="item.jobLocation"
             [summary]="item.summary"
           ></app-work-exp-card>
-          <app-dots [startEven]="index % 2 == 0"></app-dots>
+
+          <app-dots
+            class="fade-out fade-out-bottom"
+            [startEven]="index % 2 == 0"
+          ></app-dots>
         </ng-container>
       </section>
 
       <section>
-        <h3 class="text-center mb-4">2021</h3>
+        <h3 class="fade-out fade-out-bottom text-center mb-4">2021</h3>
 
-        <app-dots></app-dots>
+        <app-dots class="fade-out fade-out-bottom"></app-dots>
 
         <ng-container
           *ngFor="let item of workExperienceItems2; let index = index"
         >
           <app-work-exp-card
-            class="mb-4"
+            class="fade-out fade-out-bottom mb-4"
             [jobTitle]="item.jobTitle"
             [companyName]="item.companyName"
             [jobSchedule]="item.jobSchedule"
@@ -161,26 +188,29 @@
             [jobLocation]="item.jobLocation"
             [summary]="item.summary"
           ></app-work-exp-card>
-          <app-dots [startEven]="index % 2 != 0"></app-dots>
+          <app-dots
+            class="fade-out fade-out-bottom"
+            [startEven]="index % 2 != 0"
+          ></app-dots>
         </ng-container>
       </section>
 
-      <h3 class="text-center">2020</h3>
+      <h3 class="fade-out fade-out-bottom text-center">2020</h3>
     </section>
 
     <section id="technologiesSection" class="container py-5">
-      <h1><i class="bi bi-code me-2"></i> My Favorite Technologies</h1>
+      <h1><i class="bi bi-code me-2"></i> {{ "myFavTech.title" | locale }}</h1>
       <hr class="mb-5" />
 
-      <p class="text-center mb-4">
-        My preffered stack is <span class="text-danger">MAANC</span> (yes, i
-        just came up with that), or you might know it as:
-      </p>
+      <p
+        class="text-center mb-4"
+        [innerHtml]="'myFavTech.paragraph1' | locale"
+      ></p>
 
       <div id="prefferedStackRow" class="row m-0 p-0 mb-5">
         <div
           *ngFor="let item of prefferedStackItems"
-          class="col m-0 p-1 p-md-2 p-lg-5"
+          class="fade-out fade-scale col m-0 p-1 p-md-2 p-lg-5"
           [ngClass]="'col-' + 12 / prefferedStackItems.length"
         >
           <div>
@@ -199,11 +229,14 @@
         </div>
       </div>
 
-      <p class="text-center mb-5">But I have also worked with:</p>
+      <p class="text-center mb-5">{{ "myFavTech.paragraph2" | locale }}</p>
 
       <div class="mb-5">
         <h3 class="text-center mb-4">Frontend</h3>
-        <div class="shadow px-2 pt-4 pb-3" style="border-radius: 20px">
+        <div
+          class="fade-out fade-out-right shadow px-2 pt-4 pb-3"
+          style="border-radius: 20px"
+        >
           <app-auto-slide-images
             [images]="frontendImages"
           ></app-auto-slide-images>
@@ -211,8 +244,11 @@
       </div>
 
       <div class="mb-5">
-        <h3 class="text-center mb-4">Databases</h3>
-        <div class="shadow px-2 pt-4 pb-3" style="border-radius: 20px">
+        <h3 class="text-center mb-4">{{ "myFavTech.databases" | locale }}</h3>
+        <div
+          class="fade-out fade-out-left shadow px-2 pt-4 pb-3"
+          style="border-radius: 20px"
+        >
           <app-auto-slide-images
             [images]="databaseItems"
           ></app-auto-slide-images>
@@ -220,20 +256,28 @@
       </div>
 
       <div class="mb-5">
-        <h3 class="text-center mb-4">Tools and Libraries</h3>
-        <div class="shadow px-2 pt-4 pb-3" style="border-radius: 20px">
+        <h3 class="text-center mb-4">
+          {{ "myFavTech.toolsAndLibs" | locale }}
+        </h3>
+        <div
+          class="fade-out fade-out-right shadow px-2 pt-4 pb-3"
+          style="border-radius: 20px"
+        >
           <app-auto-slide-images [images]="toolsItems"></app-auto-slide-images>
         </div>
       </div>
     </section>
 
     <section id="sideProjectsSection" class="container pb-5 mb-5">
-      <h1><i class="bi bi-kanban me-2"></i> Side Projects</h1>
+      <h1>
+        <i class="bi bi-kanban me-2"></i>
+        {{ "sideProjectsSection.title" | locale }}
+      </h1>
       <hr class="mb-5" />
 
       <app-project-card
         *ngFor="let project of sideProjects"
-        class="mb-5"
+        class="fade-out fade-out-left mb-5"
         [title]="project.title"
         [summary]="project.summary"
         [images]="project.images"
@@ -243,9 +287,20 @@
     </section>
 
     <section id="funFactsSection" class="container pb-5 mb-5">
-      <div class="shadow" style="border-radius: 20px">
+      <h1>
+        <i class="bi bi-kanban me-2"></i>
+        {{ "funFactsSection.title" | locale }}
+      </h1>
+      <hr class="mb-5" />
+
+      <p class="text-center">Coming Soon</p>
+
+      <div *ngIf="false" class="shadow" style="border-radius: 20px">
         <div class="header px-4 py-3 border-bottom">
-          <h1><i class="bi bi-emoji-laughing me-2"></i> Fun Facts</h1>
+          <h1>
+            <i class="bi bi-emoji-laughing me-2"></i>
+            {{ "funFactsSection.title" | locale }}
+          </h1>
         </div>
         <div class="p-4">
           <ul>
@@ -273,4 +328,35 @@
       Pablo Castillo 2022 &copy;
     </p>
   </footer>
+</div>
+
+<div
+  class="modal fade"
+  id="langModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <h6 class="modal-title text-center m-0">
+          {{ "langModal.title" | locale }}
+        </h6>
+      </div>
+      <div class="modal-body p-0">
+        <div class="list-group list-group-flush rounded-bottom">
+          <button
+            *ngFor="let lang of languages"
+            class="list-group-item list-group-item-action"
+            type="button"
+            [ngClass]="{ active: isLangSelected(lang) }"
+            (click)="onLangClicked(lang)"
+          >
+            {{ lang.description }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

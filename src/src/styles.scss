@@ -26,3 +26,47 @@ body {
 .outline-green {
   outline: 2px solid green;
 }
+
+.blur-out {
+  filter: blur(5px);
+  transition: filter ease 1s;
+}
+
+.fade-out {
+  opacity: 0;
+  filter: blur(5px);
+  transition: all ease 1s;
+}
+
+.fade-scale {
+  scale: 0;
+}
+
+.fade-out-left {
+  transform: translateX(-100%);
+}
+
+.fade-out-right {
+  transform: translateX(100%);
+}
+
+.fade-out-bottom {
+  transform: translateY(100%);
+}
+
+.blur-in {
+  filter: none;
+}
+
+.fade-in {
+  opacity: 1;
+  scale: 1;
+  filter: none;
+  transform: none;
+}
+
+@media (prefers-reduced-motion) {
+  .fade-out {
+    transition: none;
+  }
+}

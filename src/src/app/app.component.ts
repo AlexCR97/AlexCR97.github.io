@@ -1,11 +1,29 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
 import { FabOptionDef } from './components/fab/FabOptionDef';
+import { Modal } from 'bootstrap';
+import { Storage } from 'src/app/storage';
+import {
+  EnglishLanguageCode,
+  Locales,
+  localizePath,
+} from './localization/locales';
 
 interface SectionDef {
   id: string;
   icon: string;
   label: string;
+}
+
+interface LangDef {
+  code: string;
+  description: string;
 }
 
 interface WorkExperienceItem {
@@ -30,11 +48,22 @@ interface ProjectDef {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnDestroy {
   @ViewChild('main', { static: true })
   mainElement?: ElementRef<HTMLElement>;
 
   readonly sidenavWidth = '250px';
+
+  readonly languages: LangDef[] = [
+    {
+      code: EnglishLanguageCode,
+      description: localizePath(Locales.langModal.optionEnglish),
+    },
+    {
+      code: 'es-MX',
+      description: localizePath(Locales.langModal.optionSpanish),
+    },
+  ];
 
   readonly mainLinks: any[] = [
     {
@@ -87,71 +116,73 @@ export class AppComponent {
   readonly fabOptions: FabOptionDef[] = [
     {
       icon: 'house',
-      label: 'Home',
+      label: localizePath(Locales.menuFab.home),
       click: () => this.tryScrollToSection('mainSummary'),
     },
     {
       icon: 'person',
-      label: 'About Me',
+      label: localizePath(Locales.menuFab.aboutMe),
       click: () => this.tryScrollToSection('aboutMeSection'),
     },
     {
       icon: 'briefcase',
-      label: 'My Experience',
+      label: localizePath(Locales.menuFab.myExp),
       click: () => this.tryScrollToSection('workExperienceSection'),
     },
     {
       icon: 'code',
-      label: 'My Favorite Technologies',
+      label: localizePath(Locales.menuFab.myFavTech),
       click: () => this.tryScrollToSection('technologiesSection'),
     },
     {
       icon: 'kanban',
-      label: 'Side Projects',
+      label: localizePath(Locales.menuFab.sideProjects),
       click: () => this.tryScrollToSection('sideProjectsSection'),
     },
     {
       icon: 'emoji-laughing',
-      label: 'Fun Facts',
+      label: localizePath(Locales.menuFab.funFacts),
       click: () => this.tryScrollToSection('funFactsSection'),
     },
   ];
 
   readonly workExperienceItems1: WorkExperienceItem[] = [
     {
-      jobTitle: 'Tech Lead / Fullstack Developer',
-      companyName: `startup company <a href="https://asterias.com.mx/" target="_blank">Asterias Software Solutions</a>`,
-      jobSchedule: 'Full-time',
-      jobType: 'Insource',
-      jobLocation: 'Onshore',
-      summary: `Lead of a small team of developers, code reviews, development of tools (<span class="text-danger">utilities, scripts, libraries</span>) for internal usage, design and implementation of <span class="text-danger">internal software architecture</span>, <span class="text-danger">unit testing</span>, and fullstack developer in various types of web applications.`,
+      jobTitle: localizePath(Locales.myWorkExpSection.jobs.asterias.jobTitle),
+      companyName: localizePath(
+        Locales.myWorkExpSection.jobs.asterias.companyName
+      ),
+      jobSchedule: localizePath(Locales.myWorkExpSection.fulltime) as any,
+      jobType: localizePath(Locales.myWorkExpSection.insource) as any,
+      jobLocation: localizePath(Locales.myWorkExpSection.onshore) as any,
+      summary: localizePath(Locales.myWorkExpSection.jobs.asterias.summary),
     },
     {
-      jobTitle: 'Fullstack Developer',
+      jobTitle: localizePath(Locales.myWorkExpSection.jobs.edwire.jobTitle),
       companyName: `<a href="https://www.linkedin.com/company/edwire/about/" target="_blank">EdWire</a>`,
-      jobSchedule: 'Part-time',
-      jobType: 'Outsource',
-      jobLocation: 'Offshore',
-      summary: `Contributor in the <a href="https://www.edgraph.com/" target="_blank">EdGraph</a> platform for <span class="text-danger">Education Organizations management</span> and as a <span class="text-danger">Saas</span> for other developers. I developed SPAs, REST APIs and Microservices with gRPC.`,
+      jobSchedule: localizePath(Locales.myWorkExpSection.parttime) as any,
+      jobType: localizePath(Locales.myWorkExpSection.outsource) as any,
+      jobLocation: localizePath(Locales.myWorkExpSection.offshore) as any,
+      summary: localizePath(Locales.myWorkExpSection.jobs.edwire.summary),
     },
   ];
 
   readonly workExperienceItems2: WorkExperienceItem[] = [
     {
-      jobTitle: 'Fullstack Developer',
+      jobTitle: localizePath(Locales.myWorkExpSection.jobs.bdi.jobTitle),
       companyName: `<a href="http://bditechnology.com/" target="_blank">Bauhaus Dessau Informatika LLC</a>`,
-      jobSchedule: 'Part-time',
-      jobType: 'Outsource',
-      jobLocation: 'Offshore',
-      summary: `Development of web applications with heavy focus on using <span class="text-danger">Azure services</span> (DevOps, Repos, Pipelines, Web Jobs, etc.)`,
+      jobSchedule: localizePath(Locales.myWorkExpSection.parttime) as any,
+      jobType: localizePath(Locales.myWorkExpSection.outsource) as any,
+      jobLocation: localizePath(Locales.myWorkExpSection.offshore) as any,
+      summary: localizePath(Locales.myWorkExpSection.jobs.bdi.summary),
     },
     {
-      jobTitle: 'Fullstack Developer',
+      jobTitle: localizePath(Locales.myWorkExpSection.jobs.lnf.jobTitle),
       companyName: `<a href="https://www.lnfdistributors.com/" target="_blank">L&F Distributors</a>`,
-      jobSchedule: 'Part-time',
-      jobType: 'Outsource',
-      jobLocation: 'Offshore',
-      summary: `Contributor in the <a href="https://portal.lnfdistributors.com/login" target="_blank">L&F Distributors Portal</a> an online website with an <span class="text-danger">E-Commerce</span>-like platform for customers and an <span class="text-danger">Admin Panel</span> for company staff.`,
+      jobSchedule: localizePath(Locales.myWorkExpSection.parttime) as any,
+      jobType: localizePath(Locales.myWorkExpSection.outsource) as any,
+      jobLocation: localizePath(Locales.myWorkExpSection.offshore) as any,
+      summary: localizePath(Locales.myWorkExpSection.jobs.lnf.summary),
     },
   ];
 
@@ -275,7 +306,7 @@ export class AppComponent {
   readonly sideProjects: ProjectDef[] = [
     {
       title: 'Viex Cloud Platform',
-      summary: `A <span class="text-danger">Saas</span> that offers services such as scheduled jobs, database hosting, caching, IdP, among others, built with <span class="text-danger">Angular + .NET Core + MongoDB</span>. Still a work in progress, but the most ambicuos side project I've worked on.`,
+      summary: localizePath(Locales.sideProjectsSection.vcp.summary),
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/Viex.CloudPlatform.Main',
       images: [
@@ -286,7 +317,7 @@ export class AppComponent {
     },
     {
       title: 'CBTIS 15 QR',
-      summary: `A hybrid application (web/Android) that integrates <span class="text-danger">sign-up, login, qr code generation, qr code scanner, user profiles, gps tracking and geocoding</span>, built with <span class="text-danger">Ionic + Firebase</span>.`,
+      summary: localizePath(Locales.sideProjectsSection.cbtis15Qr.summary),
       websiteLink: '#',
       githubLink: 'https://github.com/DiracSpace/GPSTracking',
       images: [
@@ -297,7 +328,7 @@ export class AppComponent {
     },
     {
       title: 'CBTIS 15 Maps',
-      summary: `A hybrid application (web/Android) that integrates <span class="text-danger">OpenStreetMaps, gps tracking and gps routing</span>, built with <span class="text-danger">Ionic</span>.`,
+      summary: localizePath(Locales.sideProjectsSection.cbtis15Maps.summary),
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/CBTIS-15-Maps',
       images: [
@@ -308,7 +339,7 @@ export class AppComponent {
     },
     {
       title: 'Coffee Shop',
-      summary: `An Android application to submit orders to a Coffee Shop, built with <span class="text-danger">Android Studio + SQLite</span>.`,
+      summary: localizePath(Locales.sideProjectsSection.coffeeShop.summary),
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/Coffee-Shop',
       images: [
@@ -319,7 +350,9 @@ export class AppComponent {
     },
     {
       title: 'Puppies Memorama',
-      summary: `A web application to play the Memorama card game... with puppies! Built with <span class="text-danger">Vue.js</span>.`,
+      summary: localizePath(
+        Locales.sideProjectsSection.puppiesMemorama.summary
+      ),
       websiteLink: '#',
       githubLink: 'https://github.com/AlexCR97/Puppies-Memorama.git',
       images: [
@@ -330,18 +363,55 @@ export class AppComponent {
     },
   ];
 
-  onSectionButtonClicked(section: SectionDef) {
-    const sectionElement = document.getElementById(section.id);
+  private blurObserver?: IntersectionObserver;
+  private fadeObserver?: IntersectionObserver;
+  private langModal?: Modal;
 
-    if (sectionElement) {
-      this.activeSectionId = section.id;
+  ngAfterViewInit() {
+    this.blurObserver = this.attachObserverForBlurAnimation();
+    this.fadeObserver = this.attachObserverForFadeAnimation();
+  }
 
-      sectionElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
+  ngOnDestroy(): void {
+    if (this.blurObserver) {
+      this.blurObserver.disconnect();
+      this.blurObserver = undefined;
     }
+
+    if (this.fadeObserver) {
+      this.fadeObserver.disconnect();
+      this.fadeObserver = undefined;
+    }
+
+    if (this.langModal) {
+      this.langModal.dispose();
+      this.langModal = undefined;
+    }
+  }
+
+  isLangSelected(lang: LangDef) {
+    const storedLang = Storage.local.lang.get();
+
+    if (storedLang == null) {
+      // By default, set English as selected language
+      return lang.code == EnglishLanguageCode;
+    }
+
+    return storedLang == lang.code;
+  }
+
+  onLangFabClicked() {
+    if (!this.langModal) {
+      this.langModal = new Modal('#langModal');
+    }
+
+    this.langModal.show();
+  }
+
+  onLangClicked(lang: LangDef) {
+    Storage.local.lang.set(lang.code);
+    this.langModal?.hide();
+    window.location.reload();
   }
 
   private tryScrollToSection(id: string) {
@@ -361,5 +431,37 @@ export class AppComponent {
       behavior: 'smooth',
       top: sectionElement.offsetTop,
     });
+  }
+
+  private attachObserverForBlurAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('blur-in');
+        } else {
+          entry.target.classList.remove('blur-in');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.blur-out');
+    hiddenElements.forEach((el) => observer.observe(el));
+    return observer;
+  }
+
+  private attachObserverForFadeAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        } else {
+          entry.target.classList.remove('fade-in');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.fade-out');
+    hiddenElements.forEach((el) => observer.observe(el));
+    return observer;
   }
 }
