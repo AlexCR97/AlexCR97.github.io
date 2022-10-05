@@ -65,8 +65,20 @@ export const Locales = {
       'es-MX': 'Sobre Mí',
     },
     paragraph: {
-      'en-US': `I do development, supervision and maintenance of web applications. I have experience in backend development; frontend development; database management; code reviews; version control; organization, coordination and delegation of tasks; troubleshooting and bug fixing; maintenance and optimization of systems; software architecture design and design pattern implementations. I've worked with Microsoft tools and platforms like Visual Studio, .NET Core, Azure Repos, Azure Active Directory, Azure DevOps and Automated Pipelines. I keep active communication in English collaborating remotely with people from various places in the world.`,
-      'es-MX': `Hago desarrollo, supervisión y mantenimiento de aplicaciones web. Tengo experiencia en desarrollo backend; desarrollo frontal; administración de base de datos; revisiones de código; control de versiones; organización, coordinación y delegación de tareas; solución de problemas y corrección de errores; mantenimiento y optimización de sistemas; diseño de arquitectura de software e implementaciones de patrones de diseño. He trabajado con herramientas y plataformas de Microsoft como Visual Studio, .NET Core, Azure Repos, Azure Active Directory, Azure DevOps y Automated Pipelines. Mantengo comunicación activa en inglés colaborando de forma remota con personas de varios lugares del mundo.`,
+      'en-US': `
+      I have experience developing, maintaining and supervising web applications.<br><br>
+      I specialize in .NET Core + Angular applications, but can easily adapt to any other frameworks.<br><br>
+      I've worked in the frontend building SPAs, in the backend building REST APIs and microservices, relational and non-relational databases, wired up 3rd party libraries and plugins, published re-usable libraries and written scripts for automation.<br><br>
+      I know how to manage version control with GitHub and Azure Repos and I’ve setup CI/CD pipelines.<br><br>
+      I have a strong base of Object Oriented Programming and I’m a hug fan of good coding conventions. I daily practice clean code, design patterns and implement robust/scalable software architechures.`,
+
+      'es-MX': `
+      Tengo experiencia en desarrollo, mantenimiento y supervisión de aplicaciones web.<br><br>
+      Me especializo en aplicaciones .NET Core + Angular, pero puedo adaptarme fácilmente a cualquier otro marco.<br><br>
+      He trabajado en el frontend construyendo SPAs, en el backend construyendo REST APIs y microservicios, bases de datos relacionales y no relacionales, he integrado bibliotecas y plugins de terceros, he publicado librerías reutilizables y he escrito scripts para automatización.<br><br>
+      Sé cómo manejar control de versiones con GitHub y Azure Repos y he configurado pipelines de CI/CD.<br><br>
+      Tengo una base sólida de Programación Orientada a Objetos y soy un gran fanático de las buenas convenciones de código. Diariamente practico código limpio, patrones de diseño e implemento arquitecturas de software robustas/escalables.
+      `,
     },
   }, // aboutMeSection
   myWorkExpSection: {
