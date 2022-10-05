@@ -29,8 +29,8 @@ export class ProjectCardComponent implements OnInit {
   ngOnInit(): void {
     this._iconButtons = [
       {
-        icon: 'browser-chrome',
-        iconColor: '#d6372b',
+        icon: 'globe',
+        iconColor: '#42c7ef',
         click: () => window.open(this.websiteLink, '_blank'),
       },
       {
