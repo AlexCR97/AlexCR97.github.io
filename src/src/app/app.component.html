@@ -239,6 +239,7 @@
         >
           <app-auto-slide-images
             [images]="frontendImages"
+            [size]="autoSlideImagesSize"
           ></app-auto-slide-images>
         </div>
       </div>
@@ -251,6 +252,7 @@
         >
           <app-auto-slide-images
             [images]="databaseItems"
+            [size]="autoSlideImagesSize"
           ></app-auto-slide-images>
         </div>
       </div>
@@ -263,7 +265,10 @@
           class="fade-out fade-out-right shadow px-2 pt-4 pb-3"
           style="border-radius: 20px"
         >
-          <app-auto-slide-images [images]="toolsItems"></app-auto-slide-images>
+          <app-auto-slide-images
+            [images]="toolsItems"
+            [size]="autoSlideImagesSize"
+          ></app-auto-slide-images>
         </div>
       </div>
     </section>

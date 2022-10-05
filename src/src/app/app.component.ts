@@ -83,6 +83,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     },
   ];
 
+  // TODO Is this still needed?
   readonly sections: SectionDef[] = [
     {
       id: 'aboutMeSection',
@@ -387,6 +388,23 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       this.langModal.dispose();
       this.langModal = undefined;
     }
+  }
+
+  /**
+   * Gets the width/height of the images based on Bootstrap's breakpoints.
+   *
+   * More info at https://getbootstrap.com/docs/5.2/layout/breakpoints/
+   */
+  get autoSlideImagesSize(): string {
+    if (window.innerWidth >= 768) {
+      return '100px';
+    }
+
+    if (window.innerWidth >= 576) {
+      return '75px';
+    }
+
+    return '50px';
   }
 
   isLangSelected(lang: LangDef) {
