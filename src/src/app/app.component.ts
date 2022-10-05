@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
 import { FabOptionDef } from './components/fab/FabOptionDef';
 import { Modal } from 'bootstrap';
@@ -15,10 +9,10 @@ import {
   localizePath,
 } from './localization/locales';
 
-interface SectionDef {
-  id: string;
+interface MainLinkDef {
   icon: string;
-  label: string;
+  iconColor: string;
+  click: () => void;
 }
 
 interface LangDef {
@@ -49,9 +43,6 @@ interface ProjectDef {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('main', { static: true })
-  mainElement?: ElementRef<HTMLElement>;
-
   readonly sidenavWidth = '250px';
 
   readonly languages: LangDef[] = [
@@ -65,7 +56,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     },
   ];
 
-  readonly mainLinks: any[] = [
+  readonly mainLinks: MainLinkDef[] = [
     {
       icon: 'linkedin',
       iconColor: '#0a66c2',
@@ -82,37 +73,6 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       click: () => window.open('mailto:pablo.acr97@gmail.com', '_blank'),
     },
   ];
-
-  // TODO Is this still needed?
-  readonly sections: SectionDef[] = [
-    {
-      id: 'aboutMeSection',
-      icon: 'person',
-      label: 'About Me',
-    },
-    {
-      id: 'workExperienceSection',
-      icon: 'briefcase',
-      label: 'My Experience',
-    },
-    {
-      id: 'technologiesSection',
-      icon: 'code',
-      label: 'My Favorite Technologies',
-    },
-    {
-      id: 'sideProjectsSection',
-      icon: 'kanban',
-      label: 'Side Projects',
-    },
-    {
-      id: 'funFactsSection',
-      icon: 'emoji-laughing',
-      label: 'Fun Facts',
-    },
-  ];
-
-  activeSectionId?: string;
 
   readonly fabOptions: FabOptionDef[] = [
     {
@@ -187,7 +147,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     },
   ];
 
-  readonly prefferedStackItems: any[] = [
+  readonly prefferedStackItems: AutoSlideImage[] = [
     {
       src: 'https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg',
       alt: 'MongoDB logo',
@@ -433,19 +393,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private tryScrollToSection(id: string) {
-    if (!this.mainElement) {
-      return;
-    }
-
     const sectionElement = document.getElementById(id);
 
     if (!sectionElement) {
       return;
     }
 
-    this.activeSectionId = id;
-
-    this.mainElement.nativeElement.scrollTo({
+    window.scrollTo({
       behavior: 'smooth',
       top: sectionElement.offsetTop,
     });

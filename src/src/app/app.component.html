@@ -1,339 +1,280 @@
-<aside
-  *ngIf="false"
-  class="h-100 border-end"
-  style="overflow-y: auto"
-  [style.width]="sidenavWidth"
-  [style.min-width]="sidenavWidth"
-  [style.max-width]="sidenavWidth"
+<div
+  id="langFabContainer"
+  class="position-fixed start-0 bottom-0 p-2 p-sm-3"
+  style="z-index: 3"
 >
-  <div class="p-3">
-    <div class="d-flex justify-content-center mb-2">
-      <app-avatar size="150px"></app-avatar>
-    </div>
-    <p class="text-center m-0">Pablo Castillo</p>
-    <p class="text-center m-0">Fullstack Developer</p>
-  </div>
+  <app-fab
+    class="blur-out"
+    icon="translate"
+    variant="dark"
+    (click)="onLangFabClicked()"
+  ></app-fab>
+</div>
 
-  <div class="list-group">
-    <button
-      *ngFor="let section of sections"
-      type="button"
-      class="list-group-item list-group-item-action"
-      [ngClass]="{ active: activeSectionId == section.id }"
-    >
-      <i class="bi me-2" [ngClass]="'bi-' + section.icon"></i>
-      {{ section.label }}
-    </button>
-  </div>
-</aside>
+<div
+  id="menuFabContainer"
+  class="position-fixed end-0 bottom-0 p-2 p-sm-3"
+  style="z-index: 3"
+>
+  <app-fab
+    class="blur-out"
+    [options]="fabOptions"
+    icon="list"
+    variant="dark"
+  ></app-fab>
+</div>
 
-<div class="w-100 h-100" style="display: flex; flex-direction: column">
-  <header *ngIf="false" class="border-bottom p-3">
-    <h2 class="text-center m-0">
-      Hello! I'm Pablo <i class="bi bi-emoji-laughing"></i>
+<section
+  id="mainSummary"
+  class="blur-out d-flex justify-content-center align-items-center mb-5"
+  style="
+    height: 100vh;
+    background: linear-gradient(
+      135deg,
+      rgb(245, 245, 245) 0%,
+      rgba(171, 184, 195, 1) 100%
+    );
+    position: relative;
+  "
+>
+  <app-particles-bg style="z-index: 1"></app-particles-bg>
+
+  <div style="z-index: 2">
+    <h1 class="text-center mb-2" style="font-size: 3rem">Pablo Castillo</h1>
+    <h2 class="text-center mb-5">
+      {{ "mainSummarySection.jobTitle" | locale }}
     </h2>
-  </header>
 
-  <main
-    #main
-    class="w-100 h-100"
-    style="position: relative; overflow-x: hidden; overflow-y: auto"
-  >
-    <div
-      id="langFabContainer"
-      class="position-fixed start-0 bottom-0 p-2 p-sm-3"
-      style="z-index: 3"
-    >
-      <app-fab
-        class="blur-out"
-        icon="translate"
-        variant="dark"
-        (click)="onLangFabClicked()"
-      ></app-fab>
+    <div class="d-flex justify-content-center mb-5">
+      <app-avatar size="250px"></app-avatar>
     </div>
 
-    <div
-      id="menuFabContainer"
-      class="position-fixed end-0 bottom-0 p-2 p-sm-3"
-      style="z-index: 3"
-    >
-      <app-fab
-        class="blur-out"
-        [options]="fabOptions"
-        icon="list"
-        variant="dark"
-      ></app-fab>
+    <div class="container mb-3">
+      <p class="fw-bold text-center m-0">
+        {{ "mainSummarySection.description" | locale }}
+      </p>
     </div>
 
-    <section
-      id="mainSummary"
-      class="blur-out d-flex justify-content-center align-items-center mb-5"
-      style="
-        height: 100vh;
-        background: linear-gradient(
-          135deg,
-          rgb(245, 245, 245) 0%,
-          rgba(171, 184, 195, 1) 100%
-        );
-        position: relative;
-      "
+    <p class="text-center mb-2">
+      {{ "mainSummarySection.subtitle" | locale }}
+    </p>
+
+    <div class="d-flex justify-content-center">
+      <i
+        *ngFor="let item of mainLinks"
+        class="bi mx-4"
+        [ngClass]="'bi-' + item.icon"
+        [style.color]="item.iconColor"
+        style="font-size: 2rem"
+        role="button"
+        (click)="item.click()"
+      ></i>
+    </div>
+  </div>
+</section>
+
+<section id="aboutMeSection" class="container py-5">
+  <h1>
+    <i class="bi bi-person me-2"></i> {{ "aboutMeSection.title" | locale }}
+  </h1>
+  <hr class="mb-4" />
+
+  <div class="row">
+    <div class="fade-out fade-out-left col-12 col-lg-6 p-3">
+      <p [innerHtml]="'aboutMeSection.paragraph' | locale"></p>
+    </div>
+    <div class="fade-out fade-out-right col-12 col-lg-6 p-3">
+      <img
+        src="https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
+        alt="About Me"
+        style="width: 100%; border-radius: 30px"
+      />
+    </div>
+  </div>
+</section>
+
+<section id="workExperienceSection" class="container py-5">
+  <h1>
+    <i class="bi bi-briefcase me-2"></i>
+    {{ "myWorkExpSection.title" | locale }}
+  </h1>
+  <hr class="mb-4" />
+
+  <section class="mb-4">
+    <h3 class="fade-out fade-out-bottom text-center mb-4">
+      {{ "myWorkExpSection.present" | locale }}
+    </h3>
+
+    <app-dots class="fade-out fade-out-bottom" [startEven]="false"></app-dots>
+
+    <ng-container *ngFor="let item of workExperienceItems1; let index = index">
+      <app-work-exp-card
+        class="fade-out fade-out-bottom mb-4"
+        [jobTitle]="item.jobTitle"
+        [companyName]="item.companyName"
+        [jobSchedule]="item.jobSchedule"
+        [jobType]="item.jobType"
+        [jobLocation]="item.jobLocation"
+        [summary]="item.summary"
+      ></app-work-exp-card>
+
+      <app-dots
+        class="fade-out fade-out-bottom"
+        [startEven]="index % 2 == 0"
+      ></app-dots>
+    </ng-container>
+  </section>
+
+  <section>
+    <h3 class="fade-out fade-out-bottom text-center mb-4">2021</h3>
+
+    <app-dots class="fade-out fade-out-bottom"></app-dots>
+
+    <ng-container *ngFor="let item of workExperienceItems2; let index = index">
+      <app-work-exp-card
+        class="fade-out fade-out-bottom mb-4"
+        [jobTitle]="item.jobTitle"
+        [companyName]="item.companyName"
+        [jobSchedule]="item.jobSchedule"
+        [jobType]="item.jobType"
+        [jobLocation]="item.jobLocation"
+        [summary]="item.summary"
+      ></app-work-exp-card>
+      <app-dots
+        class="fade-out fade-out-bottom"
+        [startEven]="index % 2 != 0"
+      ></app-dots>
+    </ng-container>
+  </section>
+
+  <h3 class="fade-out fade-out-bottom text-center">2020</h3>
+</section>
+
+<section id="technologiesSection" class="container py-5">
+  <h1><i class="bi bi-code me-2"></i> {{ "myFavTech.title" | locale }}</h1>
+  <hr class="mb-5" />
+
+  <p class="text-center mb-4" [innerHtml]="'myFavTech.paragraph1' | locale"></p>
+
+  <div id="prefferedStackRow" class="row m-0 p-0 mb-5">
+    <div
+      *ngFor="let item of prefferedStackItems"
+      class="fade-out fade-scale col m-0 p-1 p-md-2 p-lg-5"
+      [ngClass]="'col-' + 12 / prefferedStackItems.length"
     >
-      <app-particles-bg style="z-index: 1"></app-particles-bg>
-
-      <div style="z-index: 2">
-        <h1 class="text-center mb-2" style="font-size: 3rem">Pablo Castillo</h1>
-        <h2 class="text-center mb-5">
-          {{ "mainSummarySection.jobTitle" | locale }}
-        </h2>
-
-        <div class="d-flex justify-content-center mb-5">
-          <app-avatar size="250px"></app-avatar>
-        </div>
-
-        <div class="container mb-3">
-          <p class="fw-bold text-center m-0">
-            {{ "mainSummarySection.description" | locale }}
-          </p>
-        </div>
-
-        <p class="text-center mb-2">
-          {{ "mainSummarySection.subtitle" | locale }}
-        </p>
-
-        <div class="d-flex justify-content-center">
-          <i
-            *ngFor="let item of mainLinks"
-            class="bi mx-4"
-            [ngClass]="'bi-' + item.icon"
-            [style.color]="item.iconColor"
-            style="font-size: 2rem"
-            role="button"
-            (click)="item.click()"
-          ></i>
-        </div>
-      </div>
-    </section>
-
-    <section id="aboutMeSection" class="container py-5">
-      <h1>
-        <i class="bi bi-person me-2"></i> {{ "aboutMeSection.title" | locale }}
-      </h1>
-      <hr class="mb-4" />
-
-      <div class="row">
-        <div class="fade-out fade-out-left col-12 col-lg-6 p-3">
-          <p [innerHtml]="'aboutMeSection.paragraph' | locale"></p>
-        </div>
-        <div class="fade-out fade-out-right col-12 col-lg-6 p-3">
-          <img
-            src="https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
-            alt="About Me"
-            style="width: 100%; border-radius: 30px"
-          />
-        </div>
-      </div>
-    </section>
-
-    <section id="workExperienceSection" class="container py-5">
-      <h1>
-        <i class="bi bi-briefcase me-2"></i>
-        {{ "myWorkExpSection.title" | locale }}
-      </h1>
-      <hr class="mb-4" />
-
-      <section class="mb-4">
-        <h3 class="fade-out fade-out-bottom text-center mb-4">
-          {{ "myWorkExpSection.present" | locale }}
+      <div>
+        <img
+          class="d-block w-100 m-auto mb-4"
+          [src]="item.src"
+          [alt]="item.alt"
+        />
+        <h6 class="d-block d-md-none text-center">
+          {{ item.title }}
+        </h6>
+        <h3 class="d-none d-md-block text-center">
+          {{ item.title }}
         </h3>
-
-        <app-dots
-          class="fade-out fade-out-bottom"
-          [startEven]="false"
-        ></app-dots>
-
-        <ng-container
-          *ngFor="let item of workExperienceItems1; let index = index"
-        >
-          <app-work-exp-card
-            class="fade-out fade-out-bottom mb-4"
-            [jobTitle]="item.jobTitle"
-            [companyName]="item.companyName"
-            [jobSchedule]="item.jobSchedule"
-            [jobType]="item.jobType"
-            [jobLocation]="item.jobLocation"
-            [summary]="item.summary"
-          ></app-work-exp-card>
-
-          <app-dots
-            class="fade-out fade-out-bottom"
-            [startEven]="index % 2 == 0"
-          ></app-dots>
-        </ng-container>
-      </section>
-
-      <section>
-        <h3 class="fade-out fade-out-bottom text-center mb-4">2021</h3>
-
-        <app-dots class="fade-out fade-out-bottom"></app-dots>
-
-        <ng-container
-          *ngFor="let item of workExperienceItems2; let index = index"
-        >
-          <app-work-exp-card
-            class="fade-out fade-out-bottom mb-4"
-            [jobTitle]="item.jobTitle"
-            [companyName]="item.companyName"
-            [jobSchedule]="item.jobSchedule"
-            [jobType]="item.jobType"
-            [jobLocation]="item.jobLocation"
-            [summary]="item.summary"
-          ></app-work-exp-card>
-          <app-dots
-            class="fade-out fade-out-bottom"
-            [startEven]="index % 2 != 0"
-          ></app-dots>
-        </ng-container>
-      </section>
-
-      <h3 class="fade-out fade-out-bottom text-center">2020</h3>
-    </section>
-
-    <section id="technologiesSection" class="container py-5">
-      <h1><i class="bi bi-code me-2"></i> {{ "myFavTech.title" | locale }}</h1>
-      <hr class="mb-5" />
-
-      <p
-        class="text-center mb-4"
-        [innerHtml]="'myFavTech.paragraph1' | locale"
-      ></p>
-
-      <div id="prefferedStackRow" class="row m-0 p-0 mb-5">
-        <div
-          *ngFor="let item of prefferedStackItems"
-          class="fade-out fade-scale col m-0 p-1 p-md-2 p-lg-5"
-          [ngClass]="'col-' + 12 / prefferedStackItems.length"
-        >
-          <div>
-            <img
-              class="d-block w-100 m-auto mb-4"
-              [src]="item.src"
-              [alt]="item.alt"
-            />
-            <h6 class="d-block d-md-none text-center">
-              {{ item.title }}
-            </h6>
-            <h3 class="d-none d-md-block text-center">
-              {{ item.title }}
-            </h3>
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
 
-      <p class="text-center mb-5">{{ "myFavTech.paragraph2" | locale }}</p>
+  <p class="text-center mb-5">{{ "myFavTech.paragraph2" | locale }}</p>
 
-      <div class="mb-5">
-        <h3 class="text-center mb-4">Frontend</h3>
-        <div
-          class="fade-out fade-out-right shadow px-2 pt-4 pb-3"
-          style="border-radius: 20px"
-        >
-          <app-auto-slide-images
-            [images]="frontendImages"
-            [size]="autoSlideImagesSize"
-          ></app-auto-slide-images>
-        </div>
-      </div>
+  <div class="mb-5">
+    <h3 class="text-center mb-4">Frontend</h3>
+    <div
+      class="fade-out fade-out-right shadow px-2 pt-4 pb-3"
+      style="border-radius: 20px"
+    >
+      <app-auto-slide-images
+        [images]="frontendImages"
+        [size]="autoSlideImagesSize"
+      ></app-auto-slide-images>
+    </div>
+  </div>
 
-      <div class="mb-5">
-        <h3 class="text-center mb-4">{{ "myFavTech.databases" | locale }}</h3>
-        <div
-          class="fade-out fade-out-left shadow px-2 pt-4 pb-3"
-          style="border-radius: 20px"
-        >
-          <app-auto-slide-images
-            [images]="databaseItems"
-            [size]="autoSlideImagesSize"
-          ></app-auto-slide-images>
-        </div>
-      </div>
+  <div class="mb-5">
+    <h3 class="text-center mb-4">{{ "myFavTech.databases" | locale }}</h3>
+    <div
+      class="fade-out fade-out-left shadow px-2 pt-4 pb-3"
+      style="border-radius: 20px"
+    >
+      <app-auto-slide-images
+        [images]="databaseItems"
+        [size]="autoSlideImagesSize"
+      ></app-auto-slide-images>
+    </div>
+  </div>
 
-      <div class="mb-5">
-        <h3 class="text-center mb-4">
-          {{ "myFavTech.toolsAndLibs" | locale }}
-        </h3>
-        <div
-          class="fade-out fade-out-right shadow px-2 pt-4 pb-3"
-          style="border-radius: 20px"
-        >
-          <app-auto-slide-images
-            [images]="toolsItems"
-            [size]="autoSlideImagesSize"
-          ></app-auto-slide-images>
-        </div>
-      </div>
-    </section>
+  <div class="mb-5">
+    <h3 class="text-center mb-4">
+      {{ "myFavTech.toolsAndLibs" | locale }}
+    </h3>
+    <div
+      class="fade-out fade-out-right shadow px-2 pt-4 pb-3"
+      style="border-radius: 20px"
+    >
+      <app-auto-slide-images
+        [images]="toolsItems"
+        [size]="autoSlideImagesSize"
+      ></app-auto-slide-images>
+    </div>
+  </div>
+</section>
 
-    <section id="sideProjectsSection" class="container pb-5 mb-5">
+<section id="sideProjectsSection" class="container pb-5 mb-5">
+  <h1>
+    <i class="bi bi-kanban me-2"></i>
+    {{ "sideProjectsSection.title" | locale }}
+  </h1>
+  <hr class="mb-5" />
+
+  <app-project-card
+    *ngFor="let project of sideProjects"
+    class="fade-out fade-out-left mb-5"
+    [title]="project.title"
+    [summary]="project.summary"
+    [images]="project.images"
+    [websiteLink]="project.websiteLink"
+    [githubLink]="project.githubLink"
+  ></app-project-card>
+</section>
+
+<section id="funFactsSection" class="container pb-5 mb-5">
+  <h1>
+    <i class="bi bi-kanban me-2"></i>
+    {{ "funFactsSection.title" | locale }}
+  </h1>
+  <hr class="mb-5" />
+
+  <p class="text-center">Coming Soon</p>
+
+  <div *ngIf="false" class="shadow" style="border-radius: 20px">
+    <div class="header px-4 py-3 border-bottom">
       <h1>
-        <i class="bi bi-kanban me-2"></i>
-        {{ "sideProjectsSection.title" | locale }}
-      </h1>
-      <hr class="mb-5" />
-
-      <app-project-card
-        *ngFor="let project of sideProjects"
-        class="fade-out fade-out-left mb-5"
-        [title]="project.title"
-        [summary]="project.summary"
-        [images]="project.images"
-        [websiteLink]="project.websiteLink"
-        [githubLink]="project.githubLink"
-      ></app-project-card>
-    </section>
-
-    <section id="funFactsSection" class="container pb-5 mb-5">
-      <h1>
-        <i class="bi bi-kanban me-2"></i>
+        <i class="bi bi-emoji-laughing me-2"></i>
         {{ "funFactsSection.title" | locale }}
       </h1>
-      <hr class="mb-5" />
-
-      <p class="text-center">Coming Soon</p>
-
-      <div *ngIf="false" class="shadow" style="border-radius: 20px">
-        <div class="header px-4 py-3 border-bottom">
-          <h1>
-            <i class="bi bi-emoji-laughing me-2"></i>
-            {{ "funFactsSection.title" | locale }}
-          </h1>
-        </div>
-        <div class="p-4">
-          <ul>
-            <li>I love to code</li>
-            <li>
-              I'm a cat lover
-              <div
-                style="
-                  display: inline-block;
-                  width: 30px;
-                  height: 30px;
-                  background: url('https://api.iconify.design/mdi/cat.svg')
-                    no-repeat center center / contain;
-                "
-              ></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer *ngIf="false" class="border-top d-flex justify-content-end px-1">
-    <p class="m-0 text-muted" style="font-size: 0.9rem">
-      Pablo Castillo 2022 &copy;
-    </p>
-  </footer>
-</div>
+    </div>
+    <div class="p-4">
+      <ul>
+        <li>I love to code</li>
+        <li>
+          I'm a cat lover
+          <div
+            style="
+              display: inline-block;
+              width: 30px;
+              height: 30px;
+              background: url('https://api.iconify.design/mdi/cat.svg')
+                no-repeat center center / contain;
+            "
+          ></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <div
   class="modal fade"
