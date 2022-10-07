@@ -111,5 +111,8 @@
       }
     }
   },
-  "defaultProject": "vx-portfolio"
+  "defaultProject": "vx-portfolio",
+  "cli": {
+    "analytics": false
+  }
 }

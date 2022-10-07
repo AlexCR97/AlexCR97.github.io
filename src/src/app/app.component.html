@@ -1,14 +1,13 @@
 <div
-  id="langFabContainer"
-  class="position-fixed start-0 bottom-0 p-2 p-sm-3"
-  style="z-index: 3"
->
-  <app-fab
-    class="blur-out"
+  id="topLeftContainer"
+  class="blur-out position-fixed start-0 top-0 d-flex p-1 p-sm-2"
+  style="z-index: 3">
+  <app-icon-button
     icon="translate"
-    variant="dark"
-    (click)="onLangFabClicked()"
-  ></app-fab>
+    (click)="onLangFabClicked()">
+  </app-icon-button>
+  <app-theme-toggle-button>
+  </app-theme-toggle-button>
 </div>
 
 <div
@@ -29,13 +28,9 @@
   class="blur-out d-flex justify-content-center align-items-center mb-5"
   style="
     height: 100vh;
-    background: linear-gradient(
-      135deg,
-      rgb(245, 245, 245) 0%,
-      rgba(171, 184, 195, 1) 100%
-    );
     position: relative;
   "
+  [ngStyle]="mainSummarySectionStyle"
 >
   <app-particles-bg style="z-index: 1"></app-particles-bg>
 

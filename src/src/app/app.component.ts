@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, OnDestroy } from '@angular/core';
 import { AutoSlideImage } from './components/auto-slide-images/AutoSlideImage';
 import { FabOptionDef } from './components/fab/FabOptionDef';
 import { Modal } from 'bootstrap';
@@ -56,6 +56,30 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     },
   ];
 
+  get mainSummarySectionStyle() {
+    const colorTopStartLight = '#eeeeee'
+    const colorBottomEndLight = 'rgba(171, 184, 195, 1)'
+
+    const colorTopStartDark = '#2d3645'
+    const colorBottomEndDark = 'rgb(77 87 104)'
+  
+    const colorTopStart = Storage.local.theme.isDark()
+      ? colorTopStartDark
+      : colorTopStartLight
+  
+    const colorBottomEnd = Storage.local.theme.isDark()
+      ? colorBottomEndDark
+      : colorBottomEndLight
+
+    return {
+      background: `linear-gradient(
+        135deg,
+        ${colorTopStart} 0%,
+        ${colorBottomEnd} 100%
+      )`
+    }
+  }
+
   readonly mainLinks: MainLinkDef[] = [
     {
       icon: 'linkedin',
@@ -64,15 +88,15 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     },
     {
       icon: 'github',
-      iconColor: '#692a84',
+      iconColor: 'var(--github-color)',
       click: () => window.open('https://github.com/AlexCR97', '_blank'),
     },
     {
       icon: 'google',
       iconColor: '#d6372b',
       click: () => window.open('mailto:pablo.acr97@gmail.com', '_blank'),
-    },
-  ];
+    }
+  ]
 
   readonly fabOptions: FabOptionDef[] = [
     {
@@ -350,6 +374,17 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  @HostBinding('class')
+  get hostClass() {
+    const theme = Storage.local.theme.get()
+
+    if (!theme) {
+      return undefined
+    }
+
+    return `theme-${theme}`
+  }
+
   /**
    * Gets the width/height of the images based on Bootstrap's breakpoints.
    *
@@ -391,6 +426,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     this.langModal?.hide();
     window.location.reload();
   }
+
+  onThemeButtonClicked() {
+    
+  }
+
 
   private tryScrollToSection(id: string) {
     const sectionElement = document.getElementById(id);

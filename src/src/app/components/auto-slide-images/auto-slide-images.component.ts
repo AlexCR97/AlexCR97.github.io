@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { Storage } from 'src/app/storage';
 import { randomIntFromRange } from 'src/app/utils';
 import { AutoSlideImage } from './AutoSlideImage';
 
@@ -43,6 +44,22 @@ export class AutoSlideImagesComponent implements AfterViewInit, OnDestroy {
     if (this.intervalSubscription) {
       this.intervalSubscription.unsubscribe();
       this.intervalSubscription = undefined;
+    }
+  }
+
+  get backgroundOverlayStyle() {
+    const color = Storage.local.theme.isDark()
+      ? 'var(--app-dark-bg)'
+      : 'white'
+
+    return {
+      background: `linear-gradient(
+        90deg,
+        ${color} 0%,
+        rgba(242, 242, 194, 0) 30%,
+        rgba(255, 255, 255, 0) 70%,
+        ${color} 100%
+      )`,
     }
   }
 
