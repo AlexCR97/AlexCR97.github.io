@@ -385,6 +385,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     return `theme-${theme}`
   }
 
+  get isThemeDark(): boolean {
+    return Storage.local.theme.isDark()
+  }
+  
   /**
    * Gets the width/height of the images based on Bootstrap's breakpoints.
    *

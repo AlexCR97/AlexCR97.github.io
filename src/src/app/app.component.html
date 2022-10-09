@@ -279,19 +279,23 @@
   aria-hidden="true"
 >
   <div class="modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content">
+    <div class="modal-content" [ngClass]="{ 'bg-dark': isThemeDark }">
       <div class="modal-header justify-content-center">
         <h6 class="modal-title text-center m-0">
           {{ "langModal.title" | locale }}
         </h6>
       </div>
       <div class="modal-body p-0">
-        <div class="list-group list-group-flush rounded-bottom">
+        <div class="list-group list-group-flush rounded-bottom" [ngClass]="{ 'bg-dark': isThemeDark }">
           <button
             *ngFor="let lang of languages"
             class="list-group-item list-group-item-action"
             type="button"
-            [ngClass]="{ active: isLangSelected(lang) }"
+            [ngClass]="{
+              'active': isLangSelected(lang),
+              'bg-dark': !isLangSelected(lang) && isThemeDark,
+              'text-white': !isLangSelected(lang) && isThemeDark
+            }"
             (click)="onLangClicked(lang)"
           >
             {{ lang.description }}
