@@ -70,3 +70,37 @@ body {
     transition: none;
   }
 }
+
+// Bootstrap overrides being here
+// Overrides must be before importing bootstrap
+
+.theme-light {
+  --github-color: #692a84;
+  --app-particles-bg-top-start: #eeeeee;
+  --app-particles-bg-bottom-end: #ffffff;
+}
+
+.theme-dark {
+  --app-dark-bg: #394251;
+  --app-dark-bg-rgb: 57, 66, 81;
+  --app-particles-bg-top-start: var(--app-dark-bg-rgb);
+  --app-particles-bg-bottom-end: #2d3645;
+  --bs-danger-rgb: 173, 255, 47;
+  --bs-dark: whitesmoke;
+  --bs-light-rgb: var(--app-dark-bg-rgb);
+  --bs-modal-bg: var(--app-dark-bg);
+  --github-color: #9c54bb;
+
+  background-color: var(--app-dark-bg);
+  color: whitesmoke;
+  
+  a {
+    color: lightskyblue;
+  }
+
+  .bi {
+    color: whitesmoke;
+  }
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";

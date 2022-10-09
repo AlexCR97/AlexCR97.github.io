@@ -15,6 +15,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { FabComponent } from './components/fab/fab.component';
 import { FadeAnimationComponent } from './components/fade-animation/fade-animation.component';
 import { LocalePipe } from './localization/locale.pipe';
+import { IconButtonComponent } from './components/icon-button/icon-button.component';
+import { ThemeToggleButtonComponent } from './components/theme-toggle-button/theme-toggle-button.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { LocalePipe } from './localization/locale.pipe';
     FabComponent,
     FadeAnimationComponent,
     LocalePipe,
+    IconButtonComponent,
+    ThemeToggleButtonComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
   providers: [],
